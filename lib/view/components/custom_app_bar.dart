@@ -66,5 +66,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize =>
-      Size.fromHeight(MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height * 0.125);
+      Size.fromHeight(MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.height * 0.15);
 }

@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 import 'package:petcare/utils/app_colors.dart';
+import '../../Controller/services/services_controller.dart';
+import 'boarding_screen.dart';
+
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ServicesController());
+
     return Scaffold(
       body: Column(
         children: [
+          /// Header Section
           Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.15,
@@ -42,7 +49,8 @@ class ServicesScreen extends StatelessWidget {
                           ),
                           child: CircleAvatar(
                             radius: 25.r,
-                            backgroundImage: AssetImage('assets/images/profileImg.png'),
+                            backgroundImage:
+                            AssetImage('assets/images/profileImg.png'),
                           ),
                         ),
                         SizedBox(width: 5.w),
@@ -71,14 +79,18 @@ class ServicesScreen extends StatelessWidget {
                       ],
                     ),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: () {},
                       child: Container(
                         padding: EdgeInsets.all(8.r),
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
                         ),
-                        child: SvgPicture.asset("assets/icons/NotificationICon.svg", width: 24.w, height: 24.h)
+                        child: SvgPicture.asset(
+                          "assets/icons/NotificationICon.svg",
+                          width: 24.w,
+                          height: 24.h,
+                        ),
                       ),
                     ),
                   ],
@@ -86,176 +98,66 @@ class ServicesScreen extends StatelessWidget {
               ),
             ),
           ),
-          /// Scrollable content here
+
+          /// Scrollable Content
           Expanded(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 20.w),
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
                   children: [
                     SizedBox(height: MediaQuery.of(context).size.height * 0.041),
 
-                    ///  Boarding Section
-                    GestureDetector(
-                      onTap: (){},
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Color(0xFFE3E6F0), width: 0.6),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xFF000000).withOpacity(0.10),
-                              offset: Offset(0, 2),
-                              blurRadius: 2,
-                            )
-                          ],
+                    /// Boarding
+                    Obx(() {
+                      final isSelected = controller.selectedService.value == "Boarding";
+                      return GestureDetector(
+                        onTap: () {
+                          controller.selectService("Boarding");
+                          Get.to(() => const BoardingScreen());
+                        },
+                        child: _serviceContainer(
+                          context,
+                          iconPath: "assets/icons/boardingIcon.svg",
+                          title: "Boarding",
+                          subtitle: "In the sitter’s home",
+                          isSelected: isSelected,
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset("assets/icons/boardingIcon.svg", width: 24.w, height: 24.h),
-                            SizedBox(width: 10.w),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Boarding",
-                                  style: TextStyle(
-                                    fontFamily: 'Montserrat-Regular',
-                                    fontSize: 16.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                SizedBox(height: 5.h),
-                                Text(
-                                  "In the sitter’s home",
-                                  style: TextStyle(
-                                    fontFamily: 'Montserrat-Regular',
-                                    fontSize: 12.sp,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                      ),
-                    ),
+                      );
+                    }),
                     SizedBox(height: 16.h),
 
-                    ///  Day care Section
-                    GestureDetector(
-                      onTap: (){},
-                      child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Color(0xFFE3E6F0), width: 0.6),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xFF000000).withOpacity(0.10),
-                                offset: Offset(0, 2),
-                                blurRadius: 2,
-                              )
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset("assets/icons/dayCareIcon.svg", width: 24.w, height: 24.h),
-                              SizedBox(width: 10.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Doggy Day Care",
-                                    style: TextStyle(
-                                      fontFamily: 'Montserrat-Regular',
-                                      fontSize: 16.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  SizedBox(height: 5.h),
-                                  Text(
-                                    "In the sitter’s home",
-                                    style: TextStyle(
-                                      fontFamily: 'Montserrat-Regular',
-                                      fontSize: 12.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
-                      ),
-                    ),
+                    /// Doggy Day Care
+                    Obx(() {
+                      final isSelected = controller.selectedService.value == "Doggy Day Care";
+                      return GestureDetector(
+                        onTap: () => controller.selectService("Doggy Day Care"),
+                        child: _serviceContainer(
+                          context,
+                          iconPath: "assets/icons/dayCareIcon.svg",
+                          title: "Doggy Day Care",
+                          subtitle: "In the sitter’s home",
+                          isSelected: isSelected,
+                        ),
+                      );
+                    }),
                     SizedBox(height: 16.h),
 
-                    ///  Dog Walking Section
-                    GestureDetector(
-                      onTap: (){},
-                      child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(16.0),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(color: Color(0xFFE3E6F0), width: 0.6),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0xFF000000).withOpacity(0.10),
-                                offset: Offset(0, 2),
-                                blurRadius: 2,
-                              )
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset("assets/icons/dogWalkIcon.svg", width: 24.w, height: 24.h),
-                              SizedBox(width: 10.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Dog Walking",
-                                    style: TextStyle(
-                                      fontFamily: 'Montserrat-Regular',
-                                      fontSize: 16.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  SizedBox(height: 5.h),
-                                  Text(
-                                    "In your neighbourhood",
-                                    style: TextStyle(
-                                      fontFamily: 'Montserrat-Regular',
-                                      fontSize: 12.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          )
-                      ),
-                    ),
+                    /// Dog Walking
+                    Obx(() {
+                      final isSelected = controller.selectedService.value == "Dog Walking";
+                      return GestureDetector(
+                        onTap: () => controller.selectService("Dog Walking"),
+                        child: _serviceContainer(
+                          context,
+                          iconPath: "assets/icons/dogWalkIcon.svg",
+                          title: "Dog Walking",
+                          subtitle: "In your neighbourhood",
+                          isSelected: isSelected,
+                        ),
+                      );
+                    }),
 
                     SizedBox(height: MediaQuery.of(context).size.height * 0.041),
 
@@ -267,31 +169,87 @@ class ServicesScreen extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Montserrat-Regular',
                             fontSize: 16.sp,
-                            color: Color(0xFF1F2937),
+                            color: const Color(0xFF1F2937),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         GestureDetector(
-                          onTap: (){
-
-                          },
+                          onTap: () {},
                           child: Text(
                             "See All",
                             style: TextStyle(
                               fontFamily: 'Montserrat-Regular',
                               fontSize: 14.sp,
-                              color: Color(0xFF7A7A7A),
+                              color: const Color(0xFF7A7A7A),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
                       ],
                     )
-
                   ],
                 ),
               ),
-            )
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Reusable Service Container Widget
+  Widget _serviceContainer(
+      BuildContext context, {
+        required String iconPath,
+        required String title,
+        required String subtitle,
+        required bool isSelected,
+      }) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.mainAppColor.withOpacity(0.1) : Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isSelected ? AppColors.mainAppColor : const Color(0xFFE3E6F0),
+          width: 0.6,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.10),
+            offset: const Offset(0, 2),
+            blurRadius: 2,
+          )
+        ],
+      ),
+      child: Row(
+        children: [
+          SvgPicture.asset(iconPath, width: 24.w, height: 24.h),
+          SizedBox(width: 10.w),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontFamily: 'Montserrat-Regular',
+                  fontSize: 16.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(height: 5.h),
+              Text(
+                subtitle,
+                style: TextStyle(
+                  fontFamily: 'Montserrat-Regular',
+                  fontSize: 12.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ],
       ),
