@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:petcare/utils/app_colors.dart';
 import '../../Controller/services/services_controller.dart';
-import 'boarding_screen.dart';
+import 'boarding/boarding_screen.dart';
 
 
 class ServicesScreen extends StatelessWidget {
@@ -49,8 +49,7 @@ class ServicesScreen extends StatelessWidget {
                           ),
                           child: CircleAvatar(
                             radius: 25.r,
-                            backgroundImage:
-                            AssetImage('assets/images/profileImg.png'),
+                            backgroundImage: AssetImage('assets/images/profileImg.png'),
                           ),
                         ),
                         SizedBox(width: 5.w),

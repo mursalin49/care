@@ -8,7 +8,6 @@ class SelectPetsSheet extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,

@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
 import 'package:intl/intl.dart';
-import '../../utils/app_colors.dart';
-import '../components/custom_date_picker_sheet.dart';
-import '../components/custom_time_picker_sheet.dart';
+import 'package:petcare/view/services/boarding/boarding_sitters_screen.dart';
+import '../../../utils/app_colors.dart';
+import '../../components/custom_date_picker_sheet.dart';
+import '../../components/custom_time_picker_sheet.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:get/get.dart';
 
 class BoardingScreen extends StatefulWidget {
   const BoardingScreen({super.key});
@@ -215,8 +217,31 @@ class _BoardingScreenState extends State<BoardingScreen> {
                     debugPrint('Selected: $selectedDay');
                   },
                 ),
-
-                SizedBox(height: 24.h),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.030),
+                GestureDetector(
+                  onTap: (){
+                    Get.to(() => const BoardingSittersScreen());
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    decoration: BoxDecoration(
+                      color: AppColors.mainAppColor,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Text(
+                      "Next",
+                      style: TextStyle(
+                        fontFamily: 'Montserrat-Regular',
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.050),
               ],
             ),
           ),
