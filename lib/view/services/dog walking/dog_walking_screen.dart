@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
+import 'package:petcare/view/services/dog%20walking/dog_walking_sitters_screen.dart';
 import 'package:petcare/view/services/doggy%20day%20care/day_care_sitters_screen.dart';
 import 'package:petcare/view/services/doggy%20day%20care/widget/pet_selection_bottom_sheet.dart';
 import '../../../Controller/services/daycare_schedule_controller.dart';
@@ -15,14 +16,14 @@ import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
 
-class DoggyDayCareScreen extends StatefulWidget{
-  const DoggyDayCareScreen({super.key});
+class DogWalkingScreen extends StatefulWidget{
+  const DogWalkingScreen({super.key});
 
   @override
-  State<DoggyDayCareScreen> createState() => _DoggyDayCareScreenState();
+  State<DogWalkingScreen> createState() => _DogWalkingScreenState();
 }
 
-class _DoggyDayCareScreenState extends State<DoggyDayCareScreen> {
+class _DogWalkingScreenState extends State<DogWalkingScreen> {
 
   DateTime? startDate;
   DateTime? endDate;
@@ -47,7 +48,7 @@ class _DoggyDayCareScreenState extends State<DoggyDayCareScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Doggy Day Care",
+        title: "Dog Walking",
         showBackButton: true,
       ),
       body: SingleChildScrollView(
@@ -500,7 +501,7 @@ class _DoggyDayCareScreenState extends State<DoggyDayCareScreen> {
               ///Next button
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const DayCareSittersScreen());
+                  Get.to(() => const DogWalkingSittersScreen());
                 },
                 child: Container(
                   width: double.infinity,

@@ -6,6 +6,7 @@ import 'package:petcare/utils/app_colors.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
+import 'package:petcare/view/services/dog%20walking/dog_walking_sitters_screen.dart';
 import 'package:petcare/view/services/doggy%20day%20care/day_care_sitters_screen.dart';
 import '../../../Controller/services/daycare_schedule_controller.dart';
 import '../../components/custom_date_picker_sheet.dart';
@@ -14,14 +15,14 @@ import '../../components/custom_time_picker_sheet.dart';
 
 
 
-class DayCareFilteringScreen extends StatefulWidget{
-  const DayCareFilteringScreen({super.key});
+class DogWalkingFilteringScreen extends StatefulWidget{
+  const DogWalkingFilteringScreen({super.key});
 
   @override
-  State<DayCareFilteringScreen> createState() => _DayCareFilteringScreenState();
+  State<DogWalkingFilteringScreen> createState() => _DogWalkingFilteringScreenState();
 }
 
-class _DayCareFilteringScreenState extends State<DayCareFilteringScreen> {
+class _DogWalkingFilteringScreenState extends State<DogWalkingFilteringScreen> {
 
   final DaycareScheduleController controller = Get.put(DaycareScheduleController());
 
@@ -123,7 +124,7 @@ class _DayCareFilteringScreenState extends State<DayCareFilteringScreen> {
                       SizedBox(height: 8.h),
 
 
-                      /// Boarding dropdrown section
+                      /// Dropdown section
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 3.h),
                         decoration: BoxDecoration(
@@ -579,77 +580,21 @@ class _DayCareFilteringScreenState extends State<DayCareFilteringScreen> {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 18.h),
-
-                /// ------------------------------------ Filters & choice option section ------------------------ ///
-
-                Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Color(0xFFE3E6F0)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFF000000).withOpacity(0.20),
-                        offset: Offset(0, 2),
-                        blurRadius: 4,
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Filters",
-                        style: TextStyle(
-                          fontFamily: 'Montserrat-Regular',
-                          fontSize: 18.sp,
-                          color: Color(0xFF101010),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 20.h),
-                      _buildSection("Daytime availability", [
-                        "Sitter is home full-time",
-                        "Sitter works from home",
-                      ]),
-                      _buildSection("Home features", [
-                        "Has fenced garden",
-                        "Pets allowed on furniture",
-                        "No smoking home",
-                        "All types",
-                      ]),
-                      _buildSection("Pets in the home", [
-                        "Doesn't own dogs",
-                        "Doesn't own cats",
-                        "Accepts only one booking at a time",
-                        "Does not own caged pets",
-                      ]),
-                      _buildSection("Children in the home", [
-                        "Has no children",
-                        "Has no children 0–5 years old",
-                        "Has no children 6–12 years old",
-                      ]),
+                      SizedBox(height: 12.h),
                       _buildSection("Others", [
-                        "Accepts non spayed female dogs",
-                        "Accepts non neutered male dogs",
                         "Bathing/Grooming",
                         "Dog first-aid / CPR",
                       ]),
                     ],
                   ),
                 ),
+
                 SizedBox(height: MediaQuery.of(context).size.height * 0.031),
 
                 /// Apply Filters button
                 GestureDetector(
                   onTap: (){
-                    Get.to(() => const DayCareSittersScreen());
+                    Get.to(() => const DogWalkingSittersScreen());
                   },
                   child: Container(
                     width: double.infinity,

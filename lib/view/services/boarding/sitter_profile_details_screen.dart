@@ -40,188 +40,186 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
           title: "Sitter Profile",
           showBackButton: true,
         ),
-        body: Column(
-          children: [
-            // Header Section
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.031),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.031),
 
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                        radius: 50.r,
-                        backgroundImage: AssetImage("assets/images/profileImg.png"),
-                      ),
-                      SizedBox(width: 16.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Seam Rahman",
-                            style: TextStyle(
-                              fontFamily: 'Montserrat-Regular',
-                              fontSize: 18.sp,
-                              color: Color(0xFF000000),
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(height: 2.h),
-                          Row(
-                            children: [
-                              SvgPicture.asset("assets/icons/locationIcon.svg", color: AppColors.mainAppColor,  width: 18, height: 18),
-                              SizedBox(width: 4.w),
-                              Text(
-                                "New York",
-                                style: TextStyle(
-                                  fontFamily: 'Montserrat-Regular',
-                                  fontSize: 12.sp,
-                                  color: Color(0xFF585858),
-                                  fontWeight: FontWeight.w400,
-                                ),
+                    /// Profile Header
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 50.r,
+                          backgroundImage: AssetImage("assets/images/profileImg.png"),
+                        ),
+                        SizedBox(width: 16.w),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Seam Rahman",
+                              style: TextStyle(
+                                fontFamily: 'Montserrat-Regular',
+                                fontSize: 18.sp,
+                                color: Color(0xFF000000),
+                                fontWeight: FontWeight.w600,
                               ),
-                            ],
-                          ),
-                          SizedBox(height: 5.h),
-                          Row(
-                            children: [
-                              SvgPicture.asset("assets/icons/reviewIcon.svg", width: 18, height: 18),
-                              SizedBox(width: 4.w),
-                              RichText(
-                                text: TextSpan(
+                            ),
+                            SizedBox(height: 2.h),
+                            Row(
+                              children: [
+                                SvgPicture.asset("assets/icons/locationIcon.svg",
+                                    color: AppColors.mainAppColor, width: 18, height: 18),
+                                SizedBox(width: 4.w),
+                                Text(
+                                  "New York",
                                   style: TextStyle(
                                     fontFamily: 'Montserrat-Regular',
                                     fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
                                     color: Color(0xFF585858),
+                                    fontWeight: FontWeight.w400,
                                   ),
-                                  children: [
-                                    TextSpan(
-                                      text: '4.5',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    const TextSpan(text: ' (42 reviews)'),
-                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(height: 18.h),
-                  Wrap(
-                    spacing: 10.w,
-                    runSpacing: 10.h,
-                    children: filters.map((filter) {
-                      final bool isSelected = selectedFilters.contains(filter);
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            if (isSelected) {
-                              selectedFilters.remove(filter);
-                            } else {
-                              selectedFilters.add(filter);
-                            }
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 14.w, vertical: 8.h),
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? Colors.green.withOpacity(0.05)
-                                : Colors.white,
-                            border: Border.all(
-                              color: isSelected
-                                  ? Colors.green
-                                  : Colors.grey.withOpacity(0.5),
+                              ],
                             ),
-                            borderRadius: BorderRadius.circular(8.r),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (isSelected)
-                                Icon(Icons.check_circle,
-                                    color: Colors.green, size: 18.sp),
-                              if (isSelected) SizedBox(width: 6.w),
-                              Text(
-                                filter,
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  color: Colors.black,
+                            SizedBox(height: 5.h),
+                            Row(
+                              children: [
+                                SvgPicture.asset("assets/icons/reviewIcon.svg",
+                                    width: 18, height: 18),
+                                SizedBox(width: 4.w),
+                                RichText(
+                                  text: TextSpan(
+                                    style: TextStyle(
+                                      fontFamily: 'Montserrat-Regular',
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xFF585858),
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: '4.5',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      const TextSpan(text: ' (42 reviews)'),
+                                    ],
+                                  ),
                                 ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+
+                    SizedBox(height: 18.h),
+
+                    /// Filter Wrap
+                    Wrap(
+                      spacing: 10.w,
+                      runSpacing: 10.h,
+                      children: filters.map((filter) {
+                        final bool isSelected = selectedFilters.contains(filter);
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              if (isSelected) {
+                                selectedFilters.remove(filter);
+                              } else {
+                                selectedFilters.add(filter);
+                              }
+                            });
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 14.w, vertical: 8.h),
+                            decoration: BoxDecoration(
+                              color: isSelected
+                                  ? Colors.green.withOpacity(0.05)
+                                  : Colors.white,
+                              border: Border.all(
+                                color: isSelected
+                                    ? Colors.green
+                                    : Colors.grey.withOpacity(0.5),
                               ),
-                            ],
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (isSelected)
+                                  Icon(Icons.check_circle,
+                                      color: Colors.green, size: 18.sp),
+                                if (isSelected) SizedBox(width: 6.w),
+                                Text(
+                                  filter,
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  SizedBox(height: 18.h),
-                ],
-              ),
-            ),
-
-            // Tab Bar
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: TabBar(
-                //isScrollable: true,
-                indicatorColor: AppColors.mainAppColor,
-                labelStyle: TextStyle(
-                  fontFamily: 'Montserrat-Regular',
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF585858),
+                        );
+                      }).toList(),
+                    ),
+                    SizedBox(height: 18.h),
+                  ],
                 ),
-                labelColor: AppColors.mainAppColor,
-                unselectedLabelColor: Color(0xFF585858),
-                tabs: [
-                  Tab(child: Text("About")),
-                  Tab(child: Text("Services")),
-                  Tab(child: Text("Reviews")),
-                  Tab(child: Text("Portfolio")),
-                ],
               ),
             ),
 
-            // Tab Content
-            Expanded(
-              child: TabBarView(
-                children: [
-                  // About Tab
-                  _buildAboutTab(),
-
-                  // Services Tab
-                  _buildServicesTab(),
-
-                  // Reviews Tab
-                  _buildReviewsTab(),
-
-                  // Portfolio Tab
-                  _buildPortfolioTab(),
-                ],
+            /// Tab Bar
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _TabBarDelegate(
+                TabBar(
+                  indicatorColor: AppColors.mainAppColor,
+                  labelStyle: TextStyle(
+                    fontFamily: 'Montserrat-Regular',
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  labelColor: AppColors.mainAppColor,
+                  unselectedLabelColor: Color(0xFF585858),
+                  tabs: const [
+                    Tab(text: "About"),
+                    Tab(text: "Services"),
+                    Tab(text: "Reviews"),
+                    Tab(text: "Portfolio"),
+                  ],
+                ),
               ),
             ),
           ],
+
+          /// Tab Views
+          body: TabBarView(
+            children: [
+              _buildAboutTab(),
+              _buildServicesTab(),
+              _buildReviewsTab(),
+              _buildPortfolioTab(),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  // About Tab Content
+  /// About Tab Content
   Widget _buildAboutTab() {
     return SingleChildScrollView(
       padding: EdgeInsets.all(20.w),
@@ -386,7 +384,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 
-  // Services Tab Content
+  /// Services Tab Content
   Widget _buildServicesTab() {
     return SingleChildScrollView(
       padding: EdgeInsets.all(20.w),
@@ -614,7 +612,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
                   dropdownColor: AppColors.white,
                   isExpanded: true,
                   hint: Text(
-                    "Select a Pet",
+                    "Select an Option",
                     style: TextStyle(
                       fontFamily: 'Montserrat-Regular',
                       fontSize: 14.sp,
@@ -649,6 +647,30 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
             ),
           ),
           SizedBox(height: 24.h),
+
+          Row(
+            children: [
+              Container(
+                width: 25,
+                height: 25,
+                decoration: BoxDecoration(
+                  color: Color(0xFFFE6C5D),
+                  borderRadius: BorderRadius.circular(5.r)
+                ),
+              ),
+              SizedBox(width: 6.w),
+              Text(
+                "Booked",
+                style: TextStyle(
+                  fontFamily: 'Montserrat-Regular',
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF101010),
+                )
+              ),
+            ],
+          ),
+          SizedBox(height: 10.h),
           CustomCalendarWidget(
             unavailableDays: [
               DateTime(2025, 11, 12),
@@ -690,7 +712,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
 
   }
 
-  // Reviews Tab Content
+  /// Reviews Tab Content
   Widget _buildReviewsTab() {
     final List<Map<String, dynamic>> reviews = [
       {
@@ -789,7 +811,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 
-  // Portfolio Tab Content - SINGLE COLUMN LIST
+  /// Portfolio Tab Content - SINGLE COLUMN LIST
   Widget _buildPortfolioTab() {
     // Mock portfolio images - replace with actual images
     List<String> portfolioImages = [
@@ -832,7 +854,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 
-  // Helper method for skills items
+  /// Helper method for skills items
   Widget _buildFeatureItem(String text) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -854,7 +876,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 
-  // helper method for home details items
+  /// helper method for home details items
   Widget _buildHomedetailsItem(String text, String iconPath) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -881,7 +903,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 
-  // helper method for service prices
+  /// helper method for service prices
   Widget _buildServicePrices({ required String title, required String price, required String description}){
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 5.h),
@@ -928,7 +950,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
   }
 
 
-  // Helper method for star rating
+  /// Helper method for star rating
   Widget _buildStarRating(int rating) {
     return Row(
       children: List.generate(5, (index) {
@@ -942,7 +964,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
   }
 
 
-  // Helper method for Portfolio Item Widget - FIXED HEIGHT
+  /// Helper method for Portfolio Item Widget - FIXED HEIGHT
   Widget _buildPortfolioItem(String imagePath, int index) {
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
@@ -983,3 +1005,27 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
     );
   }
 }
+
+/// Helper class for sticky tab bar
+class _TabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar _tabBar;
+  _TabBarDelegate(this._tabBar);
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.white,
+      child: _tabBar,
+    );
+  }
+
+  @override
+  double get maxExtent => _tabBar.preferredSize.height;
+
+  @override
+  double get minExtent => _tabBar.preferredSize.height;
+
+  @override
+  bool shouldRebuild(_TabBarDelegate oldDelegate) => false;
+}
+

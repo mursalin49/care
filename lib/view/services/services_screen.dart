@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:petcare/utils/app_colors.dart';
+import 'package:petcare/view/services/dog%20walking/dog_walking_screen.dart';
 import 'package:petcare/view/services/doggy%20day%20care/doggy_day_care_screen.dart';
 import '../../Controller/services/services_controller.dart';
 import 'boarding/boarding_screen.dart';
@@ -151,7 +152,10 @@ class ServicesScreen extends StatelessWidget {
                     Obx(() {
                       final isSelected = controller.selectedService.value == "Dog Walking";
                       return GestureDetector(
-                        onTap: () => controller.selectService("Dog Walking"),
+                        onTap: (){
+                          controller.selectService("Dog Walking");
+                          Get.to(() => DogWalkingScreen());
+                        },
                         child: _serviceContainer(
                           context,
                           iconPath: "assets/icons/dogWalkIcon.svg",
