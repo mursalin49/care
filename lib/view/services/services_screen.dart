@@ -18,6 +18,7 @@ class ServicesScreen extends StatelessWidget {
     final controller = Get.put(ServicesController());
 
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       body: Column(
         children: [
           /// Header Section
