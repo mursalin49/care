@@ -116,7 +116,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                 margin: EdgeInsets.symmetric(horizontal: 6.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   color: Color(0xFFFE6C5D),
-                  borderRadius: BorderRadius.circular(4),
+                  shape: BoxShape.circle,
                 ),
                 child: Center(
                   child: Text(

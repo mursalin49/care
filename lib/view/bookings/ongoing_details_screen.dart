@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petcare/view/bookings/reschedule_screen.dart';
 import 'package:petcare/view/bookings/widgets/custom_calendar.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
-
 import '../../utils/app_colors.dart';
-import '../bookings/widget/custom_calendar.dart';
+import 'package:get/get.dart';
 
 class OngoingDetailsScreen extends StatelessWidget{
   const OngoingDetailsScreen({super.key});
@@ -41,8 +41,8 @@ class OngoingDetailsScreen extends StatelessWidget{
                 Row(
                   children: [
                     Container(
-                      width: 25,
-                      height: 25,
+                      width: 20,
+                      height: 20,
                       decoration: BoxDecoration(
                           color: Color(0xFFFE6C5D),
                           borderRadius: BorderRadius.circular(5.r)
@@ -53,26 +53,7 @@ class OngoingDetailsScreen extends StatelessWidget{
                       "Booked",
                       style: TextStyle(
                         fontFamily: 'Montserrat-Regular',
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF101010),
-                      ),
-                    ),
-                    SizedBox(width: 12.w),
-                    Container(
-                      width: 25,
-                      height: 25,
-                      decoration: BoxDecoration(
-                          color: Color(0xFF008364),
-                          borderRadius: BorderRadius.circular(5.r)
-                      ),
-                    ),
-                    SizedBox(width: 6.w),
-                    Text(
-                      "Available",
-                      style: TextStyle(
-                        fontFamily: 'Montserrat-Regular',
-                        fontSize: 18.sp,
+                        fontSize: 15.sp,
                         fontWeight: FontWeight.w500,
                         color: Color(0xFF101010),
                       ),
@@ -82,9 +63,9 @@ class OngoingDetailsScreen extends StatelessWidget{
                 SizedBox(height: 20.h),
                 CustomCalendarWidget(
                   unavailableDays: [
-                    DateTime(2025, 11, 12),
-                    DateTime(2025, 11, 13),
-                    DateTime(2025, 11, 14),
+                    DateTime(2025, 11, 26),
+                    DateTime(2025, 11, 29),
+                    DateTime(2025, 11, 30),
                   ],
                   onDaySelected: (selectedDay) {
                     debugPrint('Selected: $selectedDay');
@@ -449,7 +430,7 @@ class OngoingDetailsScreen extends StatelessWidget{
                           Expanded(
                             child: GestureDetector(
                               onTap: (){
-
+                                Get.to(() => const RescheduleScreen());
                               },
                               child: Container(
                                 padding: EdgeInsets.symmetric(vertical: 10.h),
