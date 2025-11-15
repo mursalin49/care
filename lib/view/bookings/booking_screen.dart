@@ -3,10 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/Controller/bookings/booking_status_controller.dart';
+import 'package:petcare/view/bookings/upcoming/upcoming_details_screen.dart';
 import 'package:petcare/view/bookings/widgets/custom_booking_card.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
 import '../../utils/app_colors.dart';
 import 'package:get/get.dart';
+
+import 'cancelled/cancelled_details_screen.dart';
+import 'completed/completed_details_screen.dart';
+import 'on_going/ongoing_details_screen.dart';
 
 class BookingsScreen extends StatefulWidget{
   const BookingsScreen({super.key});
@@ -81,8 +86,20 @@ class _BookingsScreenState extends State<BookingsScreen> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: ListView.builder(
-                itemCount: 10,
+                itemCount: 12,
                 itemBuilder: (context, index){
+                  String status;
+
+                  if (index < 3) {
+                    status = "On going";
+                  } else if (index < 6) {
+                    status = "Completed";
+                  } else if (index < 9) {
+                    status = "Cancelled";
+                  } else {
+                    status = "Upcoming";
+                  }
+
                   return CustomBookingCard(
                     name: "Seam Rahman",
                     profileImage: "assets/images/profileImg.png",
@@ -95,7 +112,19 @@ class _BookingsScreenState extends State<BookingsScreen> {
                     pickUpTime: "10:00 AM",
                     dropOffTime: "10:00 AM",
                     price: "99",
-                    status: "On going",
+                    status: status,
+                    onTap: () {
+                      // Navigation based on status
+                      if (status == "On going") {
+                        Get.to(() => OngoingDetailsScreen());
+                      } else if (status == "Completed") {
+                        Get.to(() => CompletedDetailsScreen());
+                      } else if (status == "Cancelled") {
+                        Get.to(() => CancelledDetailsScreen());
+                      } else if (status == "Upcoming") {
+                        Get.to(() => UpcomingDetailsScreen());
+                      }
+                    },
                   );
                 },
               ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:petcare/view/bookings/reschedule_screen.dart';
+import 'package:petcare/view/bookings/on_going/reschedule_screen.dart';
 import 'package:petcare/view/bookings/widgets/custom_calendar.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
-import '../../utils/app_colors.dart';
+import '../../../utils/app_colors.dart';
 import 'package:get/get.dart';
 
 class OngoingDetailsScreen extends StatelessWidget{
@@ -16,11 +16,10 @@ class OngoingDetailsScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "On going details",
+        title: "On going Details",
         showBackButton: true,
       ),
-      body: Expanded(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -495,7 +494,6 @@ class OngoingDetailsScreen extends StatelessWidget{
               ],
             ),
           ),
-        ),
       ),
     );
   }

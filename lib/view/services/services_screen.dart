@@ -4,9 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:petcare/utils/app_colors.dart';
+import 'package:petcare/view/bookings/booking_screen.dart';
 import 'package:petcare/view/services/dog%20walking/dog_walking_screen.dart';
 import 'package:petcare/view/services/doggy%20day%20care/doggy_day_care_screen.dart';
 import '../../Controller/services/services_controller.dart';
+import '../bookings/widgets/custom_booking_card.dart';
 import 'boarding/boarding_screen.dart';
 
 
@@ -182,7 +184,9 @@ class ServicesScreen extends StatelessWidget {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => BookingsScreen());
+                          },
                           child: Text(
                             "See All",
                             style: TextStyle(
@@ -194,7 +198,42 @@ class ServicesScreen extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
+                    ),
+                    SizedBox(height: 10.h),
+                    ListView.builder(
+                      itemCount: 12,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index){
+                        String status;
+
+                        if (index < 3) {
+                          status = "On going";
+                        } else if (index < 6) {
+                          status = "Completed";
+                        } else if (index < 9) {
+                          status = "Cancelled";
+                        } else {
+                          status = "Upcoming";
+                        }
+
+                        return CustomBookingCard(
+                          name: "Seam Rahman",
+                          profileImage: "assets/images/profileImg.png",
+                          rating: 3.8,
+                          totalReviews: 1200,
+                          date: "02/10/2025",
+                          serviceType: "Dog Walking",
+                          contactNumber: "01793396294",
+                          bookingDate: "10/10/2025",
+                          pickUpTime: "10:00 AM",
+                          dropOffTime: "10:00 AM",
+                          price: "99",
+                          status: status,
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),

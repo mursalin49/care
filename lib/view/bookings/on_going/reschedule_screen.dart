@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../utils/app_colors.dart';
-import '../components/custom_app_bar.dart';
-import '../bookings/widgets/custom_calendar.dart';
+import '../../../utils/app_colors.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
-import '../components/custom_date_picker_sheet.dart';
-import '../components/custom_time_picker_sheet.dart';
-import '../services/boarding/widget/success_reschedule_dialog.dart';
+import '../../components/custom_app_bar.dart';
+import '../../components/custom_date_picker_sheet.dart';
+import '../../components/custom_time_picker_sheet.dart';
+import '../../bookings/widgets/custom_calendar.dart';
+import '../widgets/success_reschedule_dialog.dart';
 
 
 class RescheduleScreen extends StatefulWidget{
@@ -43,8 +42,7 @@ class _RescheduleScreenState extends State<RescheduleScreen> {
         title: "Reschedule",
         showBackButton: true,
       ),
-      body: Expanded(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -304,7 +302,6 @@ class _RescheduleScreenState extends State<RescheduleScreen> {
             ),
           ),
         ),
-      ),
     );
   }
 

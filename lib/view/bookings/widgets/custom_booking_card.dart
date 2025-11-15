@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/utils/app_colors.dart';
 import 'package:get/get.dart';
-import 'package:petcare/view/bookings/ongoing_details_screen.dart';
+import 'package:petcare/view/bookings/on_going/ongoing_details_screen.dart';
 
 class CustomBookingCard extends StatelessWidget {
   final String name;
@@ -47,7 +47,7 @@ class CustomBookingCard extends StatelessWidget {
       case "cancelled":
       case "canceled":
         return Colors.redAccent;
-      case "pending":
+      case "upcoming":
         return Color(0xFFCF8906);
       default:
         return Colors.grey;
@@ -57,9 +57,7 @@ class CustomBookingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.to(() => const OngoingDetailsScreen());
-      },
+      onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8.h),
         padding: EdgeInsets.all(12.w),
