@@ -295,7 +295,18 @@ class _RescheduleScreenState extends State<RescheduleScreen> {
                     )
                   ],
                 ),
-                SizedBox(height: 30.h),
+                SizedBox(height: 12.h),
+                Center(
+                  child: Text(
+                    "You can reschedule the time only once.",
+                    style: GoogleFonts.inter(
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFFFE6C5D),
+                    ),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.040),
 
 
               ],

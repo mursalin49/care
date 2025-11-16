@@ -154,13 +154,36 @@ class OngoingDetailsScreen extends StatelessWidget{
                       ),
                       SizedBox(height: 15.h),
 
-                      Text(
-                        "Dog Walking",
-                        style: TextStyle(
-                          fontFamily: 'Montserrat-Regular',
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14.sp,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Dog Walking",
+                            style: TextStyle(
+                              fontFamily: 'Montserrat-Regular',
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14.sp,
+                            ),
+                          ),
+
+                          GestureDetector(
+                            onTap: (){},
+                            child: Row(
+                              children: [
+                                SvgPicture.asset("assets/icons/locationIcon.svg", color: Color(0xFF292D32),),
+                                SizedBox(width: 5.w),
+                                Text(
+                                  "Live Location",
+                                  style: TextStyle(
+                                    fontFamily: 'Montserrat-Regular',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                       SizedBox(height: 12.h),
 
