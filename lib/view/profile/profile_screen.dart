@@ -1,12 +1,36 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
-
+import '../../model/profile/pet.dart';
 import '../../utils/app_colors.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:get/get.dart';
+import 'add_pet_screen.dart';
 
-class ProfileScreen extends StatelessWidget{
+class ProfileScreen extends StatefulWidget{
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final _controller = ValueNotifier<bool>(false);
+  List<PetModel> pets = [];
+
+  void _navigateToAddPet() async {
+    final result = await Get.to(() => AddPetScreen());
+
+    if (result != null && result is PetModel) {
+      setState(() {
+        pets.add(result);
+      });
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +78,104 @@ class ProfileScreen extends StatelessWidget{
                   color: Color(0xFF000000),
                 ),
               ),
+              SizedBox(height: 20.h),
+
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "My Pets",
+                  style: GoogleFonts.inter(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFF111111),
+                  ),
+                ),
+              ),
+              SizedBox(height: 18.h),
+
+              /// My Pets Section with Horizontal Scroll
+
+              Container(
+                height: 110.h,
+                width: double.infinity,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  children: [
+                    ...pets.map((pet) {
+                      return Padding(
+                        padding: EdgeInsets.only(right: 16.w),
+                        child: Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.all(2),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(color: AppColors.mainAppColor, width: 1),
+                              ),
+                              child: CircleAvatar(
+                                radius: 32,
+                                backgroundImage: FileImage(
+                                  File(pet.imagePath),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 6.h),
+                            Text(
+                              pet.name,
+                              style: GoogleFonts.inter(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }).toList(),
+
+                    /// ADD PET BUTTON
+                    GestureDetector(
+                      onTap: _navigateToAddPet,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 16.w),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border:
+                                Border.all(color: AppColors.mainAppColor, width: 1.5),
+                              ),
+                              child: Center(
+                                child: Icon(
+                                  Icons.add,
+                                  color: AppColors.mainAppColor,
+                                  size: 28,
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 6.h),
+                            Text(
+                              "Add Pet",
+                              style: GoogleFonts.inter(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+
+
               SizedBox(height: 24.h),
+              /// Sitter Button
               GestureDetector(
                 onTap: (){
 
@@ -87,6 +208,7 @@ class ProfileScreen extends StatelessWidget{
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.030),
 
+              /// Account Information Details
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12.0),
@@ -135,11 +257,42 @@ class ProfileScreen extends StatelessWidget{
                       title: "Payments",
                       onTap: () {},
                     ),
+                    SizedBox(height: 16.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Image.asset("assets/icons/switchProfile.png", width: 24, height: 24, color: Color(0xFF585858),),
+                            SizedBox(width: 8.w),
+                            Text(
+                              "Switch profile",
+                              style: TextStyle(
+                                fontFamily: 'Montserrat-Regular',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xFF4D4D4D),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AdvancedSwitch(
+                          activeColor: AppColors.mainAppColor,
+                          inactiveColor: Color(0xFF787880).withOpacity(0.16),
+                          width: 48.w,
+                          height: 25.h,
+                          controller: _controller,
+                          borderRadius: BorderRadius.circular(77),
+                        ),
+
+                      ],
+                    )
                   ],
                 ),
               ),
               SizedBox(height: 16.h),
 
+              /// Policy Center Details
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12.0),
@@ -186,6 +339,8 @@ class ProfileScreen extends StatelessWidget{
                 ),
               ),
               SizedBox(height: 16.h),
+
+              /// Referrals and Promos Details
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12.0),
@@ -233,6 +388,7 @@ class ProfileScreen extends StatelessWidget{
               ),
               SizedBox(height: 16.h),
 
+              /// Settings Details
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12.0),
@@ -282,6 +438,31 @@ class ProfileScreen extends StatelessWidget{
                       textColor: Color(0xFF4D4D4D),
                     ),
                     SizedBox(height: 16.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Version",
+                          style: TextStyle(
+                            fontFamily: 'Montserrat-Regular',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF4D4D4D),
+                          ),
+                        ),
+                        Text(
+                          "1.0.0(2025)",
+                          style: TextStyle(
+                            fontFamily: 'Montserrat-Regular',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xFF4D4D4D),
+                          ),
+                        ),
+
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
                     settingsTile1(
                       title: "Update",
                       onTap: () {},
@@ -289,7 +470,9 @@ class ProfileScreen extends StatelessWidget{
                     ),
                     SizedBox(height: 16.h),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        _showDeleteDialog(context);
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -314,7 +497,6 @@ class ProfileScreen extends StatelessWidget{
                 ),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.025),
-
 
             ],
           ),
@@ -384,4 +566,92 @@ class ProfileScreen extends StatelessWidget{
   }
 
 
+  // -------------------- Delete Confirmation Dialog --------------------
+  void _showDeleteDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        insetPadding: const EdgeInsets.all(25),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+        child: Padding(
+          padding: EdgeInsets.all(14),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                child: SvgPicture.asset("assets/icons/deleteIcon.svg"),
+              ),
+              SizedBox(height: 12.h),
+              Text(
+                "Delete Account",
+                style: GoogleFonts.inter(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xFF202020),
+                ),
+              ),
+              SizedBox(height: 12.h),
+              Text(
+                "Are you sure to delete this account?",
+                style: GoogleFonts.inter(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF494949),
+                ),
+              ),
+              SizedBox(height: 12.h),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.grey, width: 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                      ),
+                      child: Text(
+                        'Cancel',
+                        style: TextStyle(
+                          fontFamily: 'Prompt_regular',
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 12.h),
+                        elevation: 0,
+                      ),
+                      child: Text(
+                        'Delete',
+                        style: TextStyle(
+                          fontFamily: 'Prompt_regular',
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
