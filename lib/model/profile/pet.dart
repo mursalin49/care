@@ -1,28 +1,58 @@
-import 'dart:io';
-
 class PetModel {
-  final String name;
-  final String imagePath; // local file path (can be empty for default)
-  final String type; // "Dog" or "Cat"
-  final String gender; // "Male" / "Female"
-  final double? weight; // in lbs
-  final int? ageYear;
-  final int? ageMonth;
-  final String? dob; // formatted date string
-  final String? breed;
+  String? name;
+  String? imagePath;
+  String? type;
+  String? gender;
+  double? weight;
+  int? ageYear;
+  int? ageMonth;
+  String? dob;
+  String? breed;
+  String? adoptionDate;
+  String? petDescription;
+
+
+  // Additional info
+  String? microchip;
+  String? spayed;
+  String? houseTrained;
+  String? childrenFriendly;
+  String? dogFriendly;
+  // Care Info
+  String? pottyBreak;
+  String? energyLevel;
+  String? feedingSchedule;
+  String? canBeLeftAlone;
+  String? pillName;
+  String? everythingKnow;
+  String? medications;
+  // Health info
+  String? veterinaryInfo;
 
   PetModel({
-    required this.name,
-    required this.imagePath,
-    required this.type,
-    required this.gender,
+    this.name,
+    this.imagePath,
+    this.type,
+    this.gender,
     this.weight,
     this.ageYear,
     this.ageMonth,
     this.dob,
     this.breed,
+    this.adoptionDate,
+    this.petDescription,
+    this.microchip,
+    this.spayed,
+    this.houseTrained,
+    this.childrenFriendly,
+    this.dogFriendly,
+    this.pottyBreak,
+    this.energyLevel,
+    this.feedingSchedule,
+    this.canBeLeftAlone,
+    this.everythingKnow,
+    this.pillName,
+    this.medications,
+    this.veterinaryInfo,
   });
-
-  // Convenience to display a placeholder if no image
-  bool get hasImage => imagePath.isNotEmpty;
 }

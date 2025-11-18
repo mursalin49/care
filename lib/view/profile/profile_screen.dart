@@ -1,36 +1,25 @@
 import 'dart:io';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
-import '../../model/profile/pet.dart';
+import '../../Controller/profile/pet_controller.dart';
 import '../../utils/app_colors.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
-import 'package:get/get.dart';
 import 'add_pet_screen.dart';
 
-class ProfileScreen extends StatefulWidget{
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
+class ProfileScreen extends StatelessWidget{
+  ProfileScreen({super.key});
 
-class _ProfileScreenState extends State<ProfileScreen> {
   final _controller = ValueNotifier<bool>(false);
-  List<PetModel> pets = [];
+
+  final PetController c = Get.put(PetController());
 
   void _navigateToAddPet() async {
-    final result = await Get.to(() => AddPetScreen());
-
-    if (result != null && result is PetModel) {
-      setState(() {
-        pets.add(result);
-      });
-    }
+    await Get.to(() => AddPetScreen());
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -94,82 +83,72 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(height: 18.h),
 
               /// My Pets Section with Horizontal Scroll
-
-              Container(
-                height: 110.h,
-                width: double.infinity,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  physics: BouncingScrollPhysics(),
-                  children: [
-                    ...pets.map((pet) {
-                      return Padding(
-                        padding: EdgeInsets.only(right: 16.w),
-                        child: Column(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(2),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(color: AppColors.mainAppColor, width: 1),
-                              ),
-                              child: CircleAvatar(
-                                radius: 32,
-                                backgroundImage: FileImage(
-                                  File(pet.imagePath),
+              SizedBox(
+                height: 120.h,
+                child: Obx(() {
+                  return ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      ...c.pets.map((pet) {
+                        return Padding(
+                          padding: EdgeInsets.only(right: 16.w),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(2),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: AppColors.mainAppColor, width: 1),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 32,
+                                  backgroundImage: (pet.imagePath != null && pet.imagePath!.isNotEmpty)
+                                      ? FileImage(File(pet.imagePath!))
+                                      : AssetImage("assets/images/pet_placeholder.png")
+                                  as ImageProvider,
                                 ),
                               ),
-                            ),
-                            SizedBox(height: 6.h),
-                            Text(
-                              pet.name,
-                              style: GoogleFonts.inter(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    }).toList(),
-
-                    /// ADD PET BUTTON
-                    GestureDetector(
-                      onTap: _navigateToAddPet,
-                      child: Padding(
-                        padding: EdgeInsets.only(right: 16.w),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 64,
-                              height: 64,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                Border.all(color: AppColors.mainAppColor, width: 1.5),
-                              ),
-                              child: Center(
-                                child: Icon(
-                                  Icons.add,
-                                  color: AppColors.mainAppColor,
-                                  size: 28,
+                              SizedBox(height: 6.h),
+                              Text(
+                                pet.name ?? "",
+                                style: GoogleFonts.inter(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w500,
                                 ),
+                              )
+                            ],
+                          ),
+                        );
+                      }).toList(),
+
+                      // ADD PET button
+                      GestureDetector(
+                        onTap: _navigateToAddPet,
+                        child: Padding(
+                          padding: EdgeInsets.only(right: 16.w),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: 64,
+                                height: 64,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: AppColors.mainAppColor,
+                                    width: 1.5,
+                                  ),
+                                ),
+                                child: Icon(Icons.add, color: AppColors.mainAppColor, size: 28),
                               ),
-                            ),
-                            SizedBox(height: 6.h),
-                            Text(
-                              "Add Pet",
-                              style: GoogleFonts.inter(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            )
-                          ],
+                              SizedBox(height: 6.h),
+                              Text("Add Pet", style: GoogleFonts.inter(fontSize: 12.sp))
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  );
+                }),
               ),
 
 
@@ -564,7 +543,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
-
 
   // -------------------- Delete Confirmation Dialog --------------------
   void _showDeleteDialog(BuildContext context) {
