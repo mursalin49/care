@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petcare/view/bookings/booking_screen.dart';
 import 'package:petcare/view/components/custom_app_bar.dart';
+import 'package:petcare/view/profile/Payments.dart';
+import 'package:petcare/view/profile/change_password.dart';
+import 'package:petcare/view/profile/edit_profile.dart';
 import '../../Controller/profile/pet_controller.dart';
 import '../../utils/app_colors.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
@@ -150,10 +154,9 @@ class ProfileScreen extends StatelessWidget{
                   );
                 }),
               ),
+              SizedBox(height: 0.h),
 
 
-
-              SizedBox(height: 24.h),
               /// Sitter Button
               GestureDetector(
                 onTap: (){
@@ -222,19 +225,33 @@ class ProfileScreen extends StatelessWidget{
                     settingsTile(
                       iconPath: "assets/icons/editProfile.svg",
                       title: "Edit Profile",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => EditProfileScreen());
+                      },
+                    ),
+                    SizedBox(height: 16.h),
+                    settingsTile(
+                      iconPath: "assets/icons/changepassIcon.svg",
+                      title: "Change Password",
+                      onTap: () {
+                        Get.to(() => ChangePasswordScreen());
+                      },
                     ),
                     SizedBox(height: 16.h),
                     settingsTile(
                       iconPath: "assets/icons/bookingHistory.svg",
                       title: "Booking history",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => BookingsScreen());
+                      },
                     ),
                     SizedBox(height: 16.h),
                     settingsTile(
                       iconPath: "assets/icons/paymentIcon.svg",
                       title: "Payments",
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(() => PaymentsScreen());
+                      },
                     ),
                     SizedBox(height: 16.h),
                     Row(
@@ -509,7 +526,7 @@ class ProfileScreen extends StatelessWidget{
               ),
             ],
           ),
-          Icon(Icons.arrow_forward_ios, size: 18, color: Color(0xFF4D4D4D)),
+          Icon(Icons.arrow_forward_ios, size: 17, color: Color(0xFF4D4D4D)),
         ],
       ),
     );

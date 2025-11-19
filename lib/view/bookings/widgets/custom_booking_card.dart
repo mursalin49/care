@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/utils/app_colors.dart';
-import 'package:get/get.dart';
-import 'package:petcare/view/bookings/on_going/ongoing_details_screen.dart';
+
 
 class CustomBookingCard extends StatelessWidget {
   final String name;
