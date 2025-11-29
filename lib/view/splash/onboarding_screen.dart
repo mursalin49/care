@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/helpers/route.dart';
 import '../../utils/app_colors.dart';
 import 'package:get/get.dart';
@@ -20,26 +19,9 @@ class OnboardingScreen extends StatelessWidget{
           child: Column(
             children: [
               SizedBox(height: 10.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset("assets/images/appLogo.svg"),
-                  GestureDetector(
-                    onTap: (){
-                      Get.toNamed(AppRoutes.loginScreen);
-                    },
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(
-                        fontFamily: 'Montserrat-Bold',
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.mainAppColor,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+              Align(
+                alignment: Alignment.topLeft,
+                child: SvgPicture.asset("assets/images/appLogo.svg"),
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.044),
               Center(
@@ -63,7 +45,7 @@ class OnboardingScreen extends StatelessWidget{
 
               GestureDetector(
                 onTap: (){
-
+                  Get.toNamed(AppRoutes.loginScreen);
                 },
                 child: Container(
                   width: double.infinity,
@@ -87,7 +69,7 @@ class OnboardingScreen extends StatelessWidget{
               SizedBox(height: 16.h),
               GestureDetector(
                 onTap: (){
-
+                  Get.toNamed(AppRoutes.sitterOnboardingScreen);
                 },
                 child: Container(
                   width: double.infinity,
