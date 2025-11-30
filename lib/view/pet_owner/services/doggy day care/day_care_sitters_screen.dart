@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:petcare/view/pet_owner/services/doggy%20day%20care/sitter_in_area_for_doggy_day_care.dart';
 import '../../../../utils/app_colors.dart';
 import 'package:get/get.dart';
 
@@ -61,7 +62,9 @@ class DayCareSittersScreen extends StatelessWidget {
                         ),
                         SizedBox(width: 12.w),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => SitterInAreaForDoggyDayCare());
+                          },
                           child: SvgPicture.asset(
                             "assets/icons/locationIcon.svg",
                             color: AppColors.white,

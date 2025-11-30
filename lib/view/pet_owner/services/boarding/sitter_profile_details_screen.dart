@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:petcare/utils/app_colors.dart';
+import 'package:petcare/view/pet_owner/services/boarding/book_service.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../bookings/widgets/custom_calendar.dart';
+import 'package:get/get.dart';
 
 
 
@@ -606,8 +608,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
                 )
               ],
             ),
-            child:  Expanded(
-              child: DropdownButtonHideUnderline(
+            child: DropdownButtonHideUnderline(
                 child: DropdownButton<String>(
                   borderRadius: BorderRadius.circular(12.r),
                   dropdownColor: AppColors.white,
@@ -645,7 +646,6 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
                   },
                 ),
               ),
-            ),
           ),
           SizedBox(height: 24.h),
 
@@ -685,7 +685,7 @@ class _SitterProfileDetailsScreenState extends State<SitterProfileDetailsScreen>
           SizedBox(height: MediaQuery.of(context).size.height * 0.030),
           GestureDetector(
             onTap: (){
-             // Get.to(() => const BoardingSittersScreen());
+             Get.to(() => BookingServiceForBoarding());
             },
             child: Container(
               width: double.infinity,

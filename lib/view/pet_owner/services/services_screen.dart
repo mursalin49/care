@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:petcare/helpers/route.dart';
 import 'package:petcare/utils/app_colors.dart';
 import '../../../Controller/services/services_controller.dart';
 import '../bookings/booking_screen.dart';
@@ -83,7 +84,9 @@ class ServicesScreen extends StatelessWidget {
                       ],
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutes.notificationScreen);
+                      },
                       child: Container(
                         padding: EdgeInsets.all(8.r),
                         decoration: const BoxDecoration(

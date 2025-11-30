@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:petcare/view/pet_owner/services/dog%20walking/sitter_in_area_for_dog_walking.dart';
 
 import '../../../../utils/app_colors.dart';
 import '../boarding/widget/sitters_profile_card.dart';
@@ -62,7 +63,9 @@ class DogWalkingSittersScreen extends StatelessWidget {
                         ),
                         SizedBox(width: 12.w),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => SitterInAreaForDogWalking());
+                          },
                           child: SvgPicture.asset(
                             "assets/icons/locationIcon.svg",
                             color: AppColors.white,

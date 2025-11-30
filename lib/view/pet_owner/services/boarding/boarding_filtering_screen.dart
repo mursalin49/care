@@ -660,11 +660,27 @@ class _BoardingFilteringScreenState extends State<BoardingFilteringScreen> {
                             : Colors.grey.shade400,
                         width: 2,
                       ),
-                      color: selectedOptions.contains(option)
-                          ? AppColors.mainAppColor
-                          : Colors.transparent,
+                      color: Colors.transparent,
                     ),
-                  ),
+                    child: Center(
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: selectedOptions.contains(option)
+                              ? AppColors.mainAppColor
+                              : Colors.transparent, // unselected = hollow
+                          border: Border.all(
+                            color: selectedOptions.contains(option)
+                                ? AppColors.mainAppColor
+                                : Colors.grey.shade400,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

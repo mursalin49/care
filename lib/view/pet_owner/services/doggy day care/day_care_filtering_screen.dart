@@ -74,7 +74,7 @@ class _DayCareFilteringScreenState extends State<DayCareFilteringScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Dog Walking", showBackButton: true),
+      appBar: CustomAppBar(title: "Doggy Day Care", showBackButton: true),
       body: Expanded(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -831,11 +831,27 @@ class _DayCareFilteringScreenState extends State<DayCareFilteringScreen> {
                             : Colors.grey.shade400,
                         width: 2,
                       ),
-                      color: selectedOptions.contains(option)
-                          ? AppColors.mainAppColor
-                          : Colors.transparent,
+                      color: Colors.transparent,
                     ),
-                  ),
+                    child: Center(
+                      child: Container(
+                        width: 10,
+                        height: 10,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: selectedOptions.contains(option)
+                              ? AppColors.mainAppColor
+                              : Colors.transparent, // unselected = hollow
+                          border: Border.all(
+                            color: selectedOptions.contains(option)
+                                ? AppColors.mainAppColor
+                                : Colors.grey.shade400,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),

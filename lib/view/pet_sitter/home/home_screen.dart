@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:petcare/Controller/sitter/sitter_booking_service_controller.dart';
 import 'package:petcare/Controller/sitter/sitter_bookingstatus_controller.dart';
 import 'package:petcare/view/pet_sitter/bookings/booking_screen.dart';
+import 'package:petcare/view/pet_sitter/home/sitter_notification_screen.dart';
 import 'package:petcare/view/pet_sitter/home/widgets/stat_card.dart';
 import '../../../utils/app_colors.dart';
 import '../../pet_sitter/home/widgets/custom_calendar.dart';
@@ -208,17 +209,25 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
       actions: [
         Padding(
           padding: EdgeInsets.only(right: 20.w),
-          child: Container(
-            width: 44.w,
-            height: 44.w,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.white.withOpacity(0.15),
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/notifica.svg',
-              width: 24.sp,
-              height: 24.sp,
+
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SitterNotificationScreen(),
+                ),
+              );
+            },
+            child: Container(
+
+              child: Center(
+                child: SvgPicture.asset(
+                  'assets/icons/notifica.svg',
+                  width: 38,
+                  height: 38,
+                ),
+              ),
             ),
           ),
         ),

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import '../../../../Controller/services/pet_selection_controller.dart';
 import '../../../../utils/app_colors.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
 import '../../../components/custom_app_bar.dart';
 import '../../../components/custom_date_picker_sheet.dart';
 import '../../../components/custom_time_picker_sheet.dart';
+import '../doggy day care/widget/pet_selection_bottom_sheet.dart';
 import 'boarding_sitters_screen.dart';
 
 
@@ -20,6 +22,8 @@ class BoardingScreen extends StatefulWidget {
 }
 
 class _BoardingScreenState extends State<BoardingScreen> {
+
+  final petController = Get.put(PetSelectionController());
 
   DateTime? startDate;
   DateTime? endDate;
@@ -176,7 +180,16 @@ class _BoardingScreenState extends State<BoardingScreen> {
                 SizedBox(height: 24.h),
 
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.bottomSheet(
+                      PetSelectionBottomSheet(controller: petController),
+                      backgroundColor: Colors.white,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                      ),
+                    );
+                  },
                   child: DottedBorder(
                     color: AppColors.mainAppColor,
                     strokeWidth: 1.5,
@@ -206,6 +219,75 @@ class _BoardingScreenState extends State<BoardingScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.030),
+
+                /// List of selected pet
+                Obx(() {
+                  if (petController.confirmedPets.isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+
+                  return Column(
+                    children: [
+                      ...petController.confirmedPets.map((pet) {
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 10.h),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: AppColors.mainAppColor, width: 1),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.05),
+                                blurRadius: 2,
+                                offset: Offset(0, 1),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundImage: AssetImage(pet["image"]!),
+                              ),
+                              SizedBox(width: 12.w),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      pet["name"]!,
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat-Regular',
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      pet["breed"]!,
+                                      style: TextStyle(
+                                        fontFamily: 'Montserrat-Regular',
+                                        fontSize: 13.sp,
+                                        color: Color(0xFF7A7A7A),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              // IconButton(
+                              //   icon: Icon(Icons.close, color: Colors.redAccent),
+                              //   onPressed: () => petController.removePet(pet),
+                              // ),
+                            ],
+                          ),
+                        );
+                      }),
+                    ],
+                  );
+                }),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.030),
+
+                /// Next Button
                 GestureDetector(
                   onTap: (){
                     Get.to(() => const BoardingSittersScreen());

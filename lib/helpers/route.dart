@@ -9,6 +9,7 @@ import '../view/pet_owner/bottom_nav/bottom_nav.dart';
 import '../view/pet_owner/inbox/inbox_screen.dart';
 import '../view/pet_owner/profile/pet_profile.dart';
 import '../view/pet_owner/profile/profile_screen.dart';
+import '../view/pet_owner/services/notification/notification_screen.dart';
 import '../view/pet_owner/services/services_screen.dart';
 import '../view/pet_sitter/auth/forgot_password_screen.dart';
 import '../view/pet_sitter/auth/new_password_screen.dart';
@@ -22,6 +23,7 @@ import '../view/pet_sitter/create_service/DogWalking.dart';
 import '../view/pet_sitter/create_service/create_service.dart';
 import '../view/pet_sitter/create_service/dog_day_care.dart';
 import '../view/pet_sitter/home/home_screen.dart';
+import '../view/pet_sitter/home/sitter_notification_screen.dart';
 import '../view/pet_sitter/profile/profile_screen.dart';
 import '../view/splash/onboarding_screen.dart';
 import '../view/splash/sitter_onboarding_screen.dart';
@@ -47,6 +49,7 @@ class AppRoutes {
   static const String bookingsScreen = "/booking_screen";
   static const String profileScreen = "/profile_screen";
   static const String petProfileScreen = "/pet_profile";
+  static const String notificationScreen = "/notification_screen";
 
   //Sitter
   static const String sitterLoginScreen = "/sitter_login_screen";
@@ -63,6 +66,7 @@ class AppRoutes {
   static const String dogwalk = "/DogWalking";
   static const String dogDay = "/dog_day_care";
   static const String sitterProfileScreen = "/profile_screen";
+  static const String sitterNotificationScreen = "/sitter_notification_screen";
 
   static List<GetPage> routes = [
 
@@ -80,6 +84,7 @@ class AppRoutes {
     GetPage(name: bookingsScreen, page: () => BookingsScreen()),
     GetPage(name: profileScreen, page: () => ProfileScreen()),
     GetPage(name: petProfileScreen, page: () => PetProfileScreen()),
+    GetPage(name: notificationScreen, page: () => NotificationScreen()),
 
     // Sitter
     GetPage(name: sitterLoginScreen, page: () => SitterLoginScreen()),
@@ -96,6 +101,7 @@ class AppRoutes {
     GetPage(name: dogwalk, page: () => DogWalkingSetupScreen()),
     GetPage(name: dogDay, page: () => DoggyDayCareSetupScreen()),
     GetPage(name: sitterProfileScreen, page: () => SitterProfileScreen()),
+    GetPage(name: sitterNotificationScreen, page: () => SitterNotificationScreen()),
 
   ];
 }

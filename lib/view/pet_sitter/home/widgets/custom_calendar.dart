@@ -35,7 +35,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(8.0),
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
+      margin: EdgeInsets.symmetric(horizontal: 00.w),
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(12),

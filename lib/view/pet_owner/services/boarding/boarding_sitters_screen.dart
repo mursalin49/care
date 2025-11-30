@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:petcare/view/pet_owner/services/boarding/sitter_in_area_for_boarding.dart';
 import 'package:petcare/view/pet_owner/services/boarding/widget/sitters_profile_card.dart';
 
 import '../../../../utils/app_colors.dart';
@@ -61,7 +62,9 @@ class BoardingSittersScreen extends StatelessWidget {
                         ),
                         SizedBox(width: 12.w),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => SitterInAreaForBoarding());
+                          },
                           child: SvgPicture.asset(
                             "assets/icons/locationIcon.svg",
                             color: AppColors.white,
