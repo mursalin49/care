@@ -12,7 +12,8 @@ class AppIcons{
   static String googleIcon ="assets/icons/googleIcon.svg";
   static String appleIcon ="assets/icons/appleIcon.svg";
   static String fbIcon ="assets/icons/fbIcon.svg";
-
+  static String message ="assets/icons/message.svg";
+  static String messages ="assets/icons/message1.svg";
   static String hom ="assets/icons/hom.svg";
   static String home ="assets/icons/home.svg";
   static String homes ="assets/icons/homes.svg";

@@ -36,6 +36,7 @@ class SitterNotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         backgroundColor: AppColors.mainAppColor,
         elevation: 0,

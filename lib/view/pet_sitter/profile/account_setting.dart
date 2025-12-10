@@ -22,7 +22,7 @@ class account extends StatelessWidget {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.bgColor,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(

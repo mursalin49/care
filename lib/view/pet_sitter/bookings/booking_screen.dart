@@ -315,21 +315,21 @@ class _SitterBookingsScreenState extends State<SitterBookingsScreen> {
         ),
       ),
       // --- Floating Messenger Button ---
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Get.to(
-          //   () => InboxScreen(
-          //     userImage: 'assets/images/nirob.jpg',
-          //     userName: 'Your Name',
-          //   ),
-          // );
-        },
-        backgroundColor: AppColors.mainAppColor,
-        child: const Icon(
-          Icons.chat_bubble_outline_rounded,
-          color: Colors.white,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     // Get.to(
+      //     //   () => InboxScreen(
+      //     //     userImage: 'assets/images/nirob.jpg',
+      //     //     userName: 'Your Name',
+      //     //   ),
+      //     // );
+      //   },
+      //   backgroundColor: AppColors.mainAppColor,
+      //   child: const Icon(
+      //     Icons.chat_bubble_outline_rounded,
+      //     color: Colors.white,
+      //   ),
+      // ),
     );
   }
 

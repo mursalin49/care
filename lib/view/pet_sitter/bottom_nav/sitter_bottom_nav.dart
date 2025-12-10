@@ -6,6 +6,7 @@ import 'package:petcare/view/pet_sitter/home/home_screen.dart';
 import 'package:petcare/view/pet_sitter/profile/profile_screen.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
+import '../../pet_owner/inbox/inbox_screen.dart';
 import '../create_service/create_service.dart';
 
 
@@ -29,6 +30,7 @@ class _SitterBottomNavScreenState extends State<SitterBottomNavScreen> {
     SitterHomeScreen(),
     CreateService(),
     SitterBookingsScreen(),
+    InboxScreen(),
     SitterProfileScreen()
   ];
 
@@ -37,7 +39,8 @@ class _SitterBottomNavScreenState extends State<SitterBottomNavScreen> {
     _navItem(AppIcons.home, AppIcons.homes, "Home", 0),
     _navItem(AppIcons.create, AppIcons.creates, "Create Service",  1),
     _navItem(AppIcons.bookingsICon, AppIcons.bookingsIConS, "Bookings",  2),
-    _navItem(AppIcons.profileIcon, AppIcons.profileIconS, "Profile",  3),
+    _navItem(AppIcons.inboxIcon, AppIcons.inboxIconS, "inbox",  3),
+    _navItem(AppIcons.profileIcon, AppIcons.profileIconS, "Profile",  4),
   ];
 
   @override
@@ -68,7 +71,7 @@ class _SitterBottomNavScreenState extends State<SitterBottomNavScreen> {
             ),
           ),
         ),
-        height: 95.h,
+        height: 100.h,
         child: BottomNavigationBar(
           elevation: 0,
           type: BottomNavigationBarType.fixed,

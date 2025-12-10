@@ -35,7 +35,7 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F8F4),
+      backgroundColor: AppColors.bgColor,
       appBar: _buildCustomAppBar(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),

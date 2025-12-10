@@ -31,7 +31,7 @@ class OnboardingScreen extends StatelessWidget{
               ),
               SizedBox(height: 18),
               Text(
-                "You Trusted and loving pet \ncare app' (TBC",
+                "You Trusted and loving \npet care app",
                 style: TextStyle(
                   fontFamily: 'BaksoSapi',
                   fontSize: 20.sp,
@@ -41,7 +41,7 @@ class OnboardingScreen extends StatelessWidget{
                 textAlign: TextAlign.center,
               ),
 
-              SizedBox(height: MediaQuery.of(context).size.height * 0.094),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.074),
 
               GestureDetector(
                 onTap: (){
@@ -49,7 +49,7 @@ class OnboardingScreen extends StatelessWidget{
                 },
                 child: Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 14.h),
+                  padding: EdgeInsets.symmetric(vertical: 12.h),
                   decoration: BoxDecoration(
                     color: AppColors.mainAppColor,
                     borderRadius: BorderRadius.circular(8.r),
@@ -57,7 +57,7 @@ class OnboardingScreen extends StatelessWidget{
                   child: Text(
                     "Find pet care",
                     style: TextStyle(
-                      fontFamily: 'Montserrat-Bold',
+                      fontFamily: 'BaksoSapi',
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
                       color: AppColors.white,
@@ -75,17 +75,16 @@ class OnboardingScreen extends StatelessWidget{
                   width: double.infinity,
                   padding: EdgeInsets.symmetric(vertical: 12.h),
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: AppColors.mainAppColor,
                     borderRadius: BorderRadius.circular(8.r),
-                    border: Border.all(color: AppColors.mainAppColor, width: 2)
                   ),
                   child: Text(
                     "Become a sitter",
                     style: TextStyle(
-                      fontFamily: 'Montserrat-Bold',
+                      fontFamily: 'BaksoSapi',
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.mainAppColor,
+                      color: AppColors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),

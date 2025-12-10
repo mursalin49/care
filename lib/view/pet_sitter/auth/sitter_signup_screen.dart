@@ -200,7 +200,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                           // English button
                           Expanded(
                             child: LanguageCard(
-                              flag: SvgPicture.asset('assets/icons/usFlagIcon.svg', width: 26.w, height: 26.h),
+                              flag: SvgPicture.asset('assets/icons/flagIcon.svg', width: 26.w, height: 26.h),
                               title: 'English',
                               isSelected: selectedLanguage == 'English',
                               onTap: () {

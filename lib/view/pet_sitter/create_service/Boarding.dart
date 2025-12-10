@@ -21,7 +21,7 @@ class BoardingSetupScreen extends StatelessWidget {
     final snackbarMessage = 'The boarding service settings have been ${isEditing ? 'saved' : 'created'}.';
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgColor,
       appBar: _buildCustomAppBar(context),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -152,8 +152,8 @@ class BoardingSetupScreen extends StatelessWidget {
             Text(
               'Are you home full-time during the week?',
               style: GoogleFonts.montserrat(
-                fontSize: 14.sp,
-                color: AppColors.primaryText,
+                fontSize: 16,
+                color: AppColors.greytext,
               ),
             ),
             SizedBox(height: 10.h),
@@ -180,7 +180,7 @@ class BoardingSetupScreen extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                color: AppColors.textDark,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -209,7 +209,7 @@ class BoardingSetupScreen extends StatelessWidget {
               'How many pets per day can you host in your home?',
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
-                color: AppColors.primaryText,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -232,9 +232,9 @@ class BoardingSetupScreen extends StatelessWidget {
             Text(
               'What type of home do you live in?',
               style: GoogleFonts.montserrat(
-                fontSize: 14,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: AppColors.primaryText,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -248,8 +248,8 @@ class BoardingSetupScreen extends StatelessWidget {
             Text(
               'What type of yard do you have?',
               style: GoogleFonts.montserrat(
-                fontSize: 14,
-                color: AppColors.primaryText,
+                fontSize: 16,
+                color: AppColors.mainAppColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -403,9 +403,9 @@ class BoardingSetupScreen extends StatelessWidget {
       child: Text(
         title,
         style: GoogleFonts.montserrat(
-          fontSize: 16,
+          fontSize: 18,
           fontWeight: FontWeight.w600,
-          color: AppColors.textDark,
+          color: AppColors.mainAppColor,
         ),
       ),
     );
@@ -617,7 +617,7 @@ class BoardingSetupScreen extends StatelessWidget {
                 text,
                 style: GoogleFonts.montserrat(
                   fontSize: 14.sp,
-                  color: AppColors.primaryText,
+                  color: AppColors.greytext,
                 ),
               ),
             ),
@@ -709,7 +709,7 @@ class BoardingSetupScreen extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: AppColors.primaryText,
+                color: AppColors.mainAppColor,
               ),
             ),
           ),
