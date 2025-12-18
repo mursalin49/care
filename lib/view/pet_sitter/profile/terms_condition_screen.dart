@@ -55,9 +55,11 @@ class TermsConditionScreen extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
+
+
 
             SizedBox(height: 10.h),
 
@@ -77,11 +79,11 @@ class TermsConditionScreen extends StatelessWidget {
             SizedBox(height: 20.h),
 
             Text(
-              "2. User Responsibilities As a user, you agree to:",
+              "1. User Responsibilities As a user, you agree to:",
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
 
@@ -94,11 +96,11 @@ class TermsConditionScreen extends StatelessWidget {
             SizedBox(height: 20.h),
 
             Text(
-              "3. Intellectual Property",
+              "2. Intellectual Property",
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
 
@@ -111,18 +113,18 @@ class TermsConditionScreen extends StatelessWidget {
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w400,
                 height: 1.5,
-                color: Colors.black87,
+                color: AppColors.textDark,
               ),
             ),
 
             SizedBox(height: 20.h),
 
             Text(
-              "4. Disclaimers",
+              "3. Disclaimers",
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
 
@@ -136,59 +138,11 @@ class TermsConditionScreen extends StatelessWidget {
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w400,
                 height: 1.5,
-                color: Colors.black87,
+                color: AppColors.textDark,
               ),
             ),
 
-            SizedBox(height: 20.h),
 
-            Text(
-              "5. Disclaimers",
-              style: GoogleFonts.montserrat(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-
-            SizedBox(height: 8.h),
-
-            Text(
-              "The service is provided on an \"as is\" and \"as available\" "
-                  "basis. [Your Company Name] makes no warranties, expressed "
-                  "or implied, regarding the operation.",
-              style: GoogleFonts.montserrat(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w400,
-                height: 1.5,
-                color: Colors.black87,
-              ),
-            ),
-
-            SizedBox(height: 20.h),
-
-            Text(
-              "6. Disclaimers",
-              style: GoogleFonts.montserrat(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: Colors.black87,
-              ),
-            ),
-
-            SizedBox(height: 8.h),
-
-            Text(
-              "The service is provided on an \"as is\" and \"as available\" "
-                  "basis. [Your Company Name] makes no warranties, expressed "
-                  "or implied, regarding the operation.",
-              style: GoogleFonts.montserrat(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w400,
-                height: 1.5,
-                color: Colors.black87,
-              ),
-            ),
 
             SizedBox(height: 30.h),
           ],

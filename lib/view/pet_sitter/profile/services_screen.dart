@@ -16,6 +16,7 @@ class YourServicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       appBar: AppBar(
 
         backgroundColor: AppColors.mainAppColor,
@@ -64,32 +65,32 @@ class YourServicesScreen extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
 
-          // --- Service 2: Doggy Day Care (EDIT MODE) ---
-          _buildServiceCard(
-            iconPath: 'assets/icons/home-hashtag.svg',
-            title: 'Doggy Day Care',
-            subtitle: 'In the sitter\'s home',
-            price: '\$99',
-            priceUnit: 'Per visit',
-            onTap: () {
-              // Navigate to DoggyDayCareSetupScreen in EDITING MODE
-              Get.to(() => DoggyDayCareSetupScreen(isEditing: true));
-            },
-          ),
-          SizedBox(height: 16.h),
-
-          // --- Service 3: Dog Walking (EDIT MODE) ---
-          _buildServiceCard(
-            iconPath: 'assets/icons/doggy.svg',
-            title: 'Dog Walking',
-            subtitle: 'In your neighbourhood',
-            price: '\$99',
-            priceUnit: 'Per walk',
-            onTap: () {
-              // Navigate to DogWalkingSetupScreen in EDITING MODE
-              Get.to(() => const DogWalkingSetupScreen(isEditing: true));
-            },
-          ),
+          // // --- Service 2: Doggy Day Care (EDIT MODE) ---
+          // _buildServiceCard(
+          //   iconPath: 'assets/icons/home-hashtag.svg',
+          //   title: 'Doggy Day Care',
+          //   subtitle: 'In the sitter\'s home',
+          //   price: '\$99',
+          //   priceUnit: 'Per visit',
+          //   onTap: () {
+          //     // Navigate to DoggyDayCareSetupScreen in EDITING MODE
+          //     Get.to(() => DoggyDayCareSetupScreen(isEditing: true));
+          //   },
+          // ),
+          // SizedBox(height: 16.h),
+          //
+          // // --- Service 3: Dog Walking (EDIT MODE) ---
+          // _buildServiceCard(
+          //   iconPath: 'assets/icons/doggy.svg',
+          //   title: 'Dog Walking',
+          //   subtitle: 'In your neighbourhood',
+          //   price: '\$99',
+          //   priceUnit: 'Per walk',
+          //   onTap: () {
+          //     // Navigate to DogWalkingSetupScreen in EDITING MODE
+          //     Get.to(() => const DogWalkingSetupScreen(isEditing: true));
+          //   },
+          // ),
         ],
       ),
     );
@@ -141,7 +142,7 @@ class YourServicesScreen extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.textDark,
+                      color: AppColors.mainAppColor,
                     ),
                   ),
                   SizedBox(height: 4.h),

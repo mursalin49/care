@@ -28,7 +28,58 @@ class BoardingSetupScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h,),
+            const Text(
+              'Service name',
+              style: TextStyle(
+                color: AppColors.mainAppColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Boarding',
+                hintStyle: const TextStyle(
+                  color: AppColors.mainAppColor ,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 12,
+                ),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    'assets/icons/calendar-add-01 (1).svg',
+                    width: 22,
+                    height: 22,
+                    colorFilter: const ColorFilter.mode(
+                      Colors.black54,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black12),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.mainAppColor),
+                ),
+              ),
+            ),
+
+            SizedBox(height: 15.h),
             _buildInfoBanner(),
             SizedBox(height: 20.h),
 
@@ -37,7 +88,7 @@ class BoardingSetupScreen extends StatelessWidget {
             _buildRateInput(
               title: 'Set your base rate',
               controller: controller.baseRateController,
-              keepPercentage: 'What you will earn per service: \$24.00',
+              keepPercentage: 'Wuffoos suggested price range for dog walks is \$24-\$30',
               rateUnit: 'Per day',
               isStandalone: true,
             ),
@@ -103,7 +154,7 @@ class BoardingSetupScreen extends StatelessWidget {
                       keepPercentage: 'You keep: \$24.00',
                       addBottomSpacing: false,
                     ),
-                    Obx(() => _buildSquareCheckbox(
+                    Obx(() => _buildSquareCheckbox1(
                       text: 'Offer for free',
                       value: controller.offerGroomingForFree.value,
                       onChanged: (val) => controller.offerGroomingForFree.value = val!,
@@ -174,7 +225,7 @@ class BoardingSetupScreen extends StatelessWidget {
                 ),
               ],
             )),
-            SizedBox(height: 15.h),
+            SizedBox(height: 10.h),
             Text(
               'You can edit any date individually by going to your calendar.',
               style: GoogleFonts.montserrat(
@@ -186,7 +237,7 @@ class BoardingSetupScreen extends StatelessWidget {
             SizedBox(height: 10.h),
             _buildDaySelectors(controller),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Potty Breaks
             _buildSectionTitle('How frequently can you provide potty breaks?'),
@@ -201,7 +252,7 @@ class BoardingSetupScreen extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Pet preferences
             _buildSectionTitle('Pet preferences'),
@@ -209,13 +260,14 @@ class BoardingSetupScreen extends StatelessWidget {
               'How many pets per day can you host in your home?',
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
                 color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
             _buildPetCountSelector(controller),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             _buildSectionTitle('What type of pets can you host in your home?'),
             SizedBox(height: 10.h),
@@ -225,7 +277,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.petSizes[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // About your home
             _buildSectionTitle('About your home'),
@@ -244,7 +296,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.homeTypes[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
             Text(
               'What type of yard do you have?',
               style: GoogleFonts.montserrat(
@@ -260,7 +312,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.yardTypes[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Boarding Expectations
             _buildSectionTitle('What can pet owners expect when boarding at your home?'),
@@ -271,7 +323,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.boardingExpectations[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Hosting Abilities
             _buildSectionTitle('Are you able to host any of the following?'),
@@ -282,7 +334,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.hostingAbilities[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Cancellation Policy
             _buildSectionTitle('What is your cancellation policy for Doggy Day Care?'),
@@ -293,7 +345,7 @@ class BoardingSetupScreen extends StatelessWidget {
               onChanged: (val) => controller.cancellationPolicy[key]!.value = val!,
             ))).toList(),
 
-            SizedBox(height: 30.h),
+            SizedBox(height: 10.h),
 
             // Bottom CTA Button (Dynamic)
             Container(
@@ -321,7 +373,7 @@ class BoardingSetupScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 40.h),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
@@ -403,8 +455,8 @@ class BoardingSetupScreen extends StatelessWidget {
       child: Text(
         title,
         style: GoogleFonts.montserrat(
-          fontSize: 18,
-          fontWeight: FontWeight.w600,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
           color: AppColors.mainAppColor,
         ),
       ),
@@ -436,12 +488,17 @@ class BoardingSetupScreen extends StatelessWidget {
   Widget _buildRateInput({
     required String title,
     required TextEditingController controller,
-    String keepPercentage = 'you keep: \$24.00',
+    String keepPercentage = 'You keep: \$24.00',
     String rateUnit = 'Per day',
     bool isStandalone = false,
-    bool addBottomSpacing = false,
+    bool addBottomSpacing = true,
   }) {
-    // Removed the conditional title display here to prevent double headers.
+
+    final keepText = keepPercentage;
+
+
+    final rateValue = '\$${controller.text.isEmpty ? '0.00' : controller.text}';
+
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -451,10 +508,13 @@ class BoardingSetupScreen extends StatelessWidget {
         Container(
           height: 45.h,
           decoration: BoxDecoration(
+
+            color: AppColors.white,
             border: Border.all(color: AppColors.Secondaryborder),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Left side text (e.g., 'Per day')
               Padding(
@@ -463,38 +523,20 @@ class BoardingSetupScreen extends StatelessWidget {
                   rateUnit,
                   style: GoogleFonts.montserrat(
                     fontSize: 14.sp,
-                    color: AppColors.grey,
+                    color: AppColors.mainAppColor,
                   ),
                 ),
               ),
-              // Vertical Divider
-              const VerticalDivider(width: 1, color: AppColors.Secondaryborder),
 
-              // Right side Input Field (TextFormField for manual input)
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: TextFormField(
-                    controller: controller,
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textDark,
-                    ),
-                    decoration: InputDecoration(
-                      prefixText: '\$',
-                      prefixStyle: GoogleFonts.montserrat(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textDark,
-                      ),
-                      contentPadding: EdgeInsets.zero,
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                    ),
+              // Right side Display Text
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Text(
+                  rateValue,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.mainAppColor,
                   ),
                 ),
               ),
@@ -509,7 +551,7 @@ class BoardingSetupScreen extends StatelessWidget {
             bottom: addBottomSpacing ? 10.h : 5.h,
           ),
           child: Text(
-            keepPercentage,
+            keepText,
             style: GoogleFonts.montserrat(
               fontSize: 12.sp,
               color: AppColors.secondaryText,
@@ -517,12 +559,11 @@ class BoardingSetupScreen extends StatelessWidget {
           ),
         ),
 
-        if (!isStandalone)
+        if (!isStandalone && addBottomSpacing)
           SizedBox(height: 15.h),
       ],
     );
   }
-
   Widget _buildRadioOption<T>({
     required String text,
     required T value,
@@ -681,6 +722,43 @@ class BoardingSetupScreen extends StatelessWidget {
   }
 
   Widget _buildSquareCheckbox({
+    required String text,
+    required bool value,
+    required ValueChanged<bool?> onChanged,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 5.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Transform.scale(
+            scale: 1.1,
+            child: Checkbox(
+              value: value,
+              onChanged: onChanged,
+              activeColor: AppColors.mainAppColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.r),
+              ),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+          ),
+          SizedBox(width: 4.w),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.greytext,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+  Widget _buildSquareCheckbox1({
     required String text,
     required bool value,
     required ValueChanged<bool?> onChanged,

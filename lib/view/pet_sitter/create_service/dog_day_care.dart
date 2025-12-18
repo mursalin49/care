@@ -7,43 +7,92 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import 'DoggyDayCareController.dart';
 
-
-
 class DoggyDayCareSetupScreen extends StatelessWidget {
   final bool isEditing;
   const DoggyDayCareSetupScreen({super.key, this.isEditing = false});
 
   @override
   Widget build(BuildContext context) {
+    // GetX Controller initialization
     final controller = Get.put(DoggyDayCareController());
     final buttonText = isEditing ? 'Save Service' : 'Create Service';
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgColor,
       appBar: _buildCustomAppBar(context, isEditing),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10.h),
 
+            SizedBox(height: 10.h,),
+            const Text(
+              'Service name',
+              style: TextStyle(
+                color: AppColors.mainAppColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 8),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'Dog Day Care',
+                hintStyle: const TextStyle(
+                  color: AppColors.mainAppColor ,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 16,
+                  horizontal: 12,
+                ),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SvgPicture.asset(
+                    'assets/icons/home-hashtag.svg',
+                    width: 22,
+                    height: 22,
+                    colorFilter: const ColorFilter.mode(
+                      Colors.black54,
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black12),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: Colors.black12),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(color: AppColors.mainAppColor),
+                ),
+              ),
+            ),
+              SizedBox(height: 15.h,),
             // Info Banner
             _buildInfoBanner(),
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
 
             // Set your base rate
-            _buildSectionTitle('Set your base rate'), // Removed isMainTitle for simplicity
+            _buildSectionTitle('Set your base rate'),
             _buildRateInput(
               title: 'Set your base rate',
-              controller: controller.baseRateController, // Use controller
-              keepPercentage: 'What you will earn per service: \$24.00',
+              controller: controller.baseRateController,
+              keepPercentage: 'Wuffoos suggested price range for dog walks is \$24-\$30',
               isStandalone: true,
             ),
 
             // Checkbox (Update my additional rates)
             Obx(() =>
-                _buildSquareCheckbox(
+                _buildSquareCheckbox1(
                   text: 'Update my additional rates based on my base rate',
                   value: controller.updateRatesBasedOnBase.value,
                   onChanged: (val) =>
@@ -70,6 +119,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
                     _buildRateInput(
                       title: 'Holiday Rate',
                       controller: controller.holidayRateController,
+                      keepPercentage: 'You keep: \$24.00',
                     ),
 
                     // Puppy Rate
@@ -77,6 +127,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
                     _buildRateInput(
                       title: 'Puppy Rate',
                       controller: controller.puppyRateController,
+                      keepPercentage: 'You keep: \$24.00',
                     ),
 
                     // Bathing / Grooming
@@ -84,10 +135,11 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
                     _buildRateInput(
                       title: 'Bathing / Grooming',
                       controller: controller.groomingRateController,
-                      addBottomSpacing: false, // Checkbox below provides spacing
+                      keepPercentage: 'You keep: \$24.00',
+                      addBottomSpacing: false,
                     ),
                     Obx(() =>
-                        _buildSquareCheckbox(
+                        _buildSquareCheckbox1(
                           text: 'Offer for free',
                           value: controller.offerGroomingForFree.value,
                           onChanged: (val) =>
@@ -169,8 +221,8 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
             Text(
               'You can edit any date individually by going to your calendar.',
               style: GoogleFonts.montserrat(
-                fontSize: 12.sp,
-                color: AppColors.secondaryText,
+                fontSize: 14.sp,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -197,7 +249,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
               'How many pets per day can you host in your home?',
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
-                color: AppColors.primaryText,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -222,7 +274,8 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
               'What type of home do you live in?',
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
-                color: AppColors.primaryText,
+                fontWeight: FontWeight.w600,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -240,7 +293,8 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
               'What type of yard do you have?',
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
-                color: AppColors.primaryText,
+                fontWeight: FontWeight.w600,
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(height: 10.h),
@@ -305,7 +359,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
     );
   }
 
-  // --- Helper Widgets (Updated or Reused from Boarding) ---
+  // --- Helper Widgets ---
 
   AppBar _buildCustomAppBar(BuildContext context, bool isEditing) {
     return AppBar(
@@ -351,7 +405,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 10.h),
       padding: EdgeInsets.all(12.w),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: AppColors.bgColor,
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(color: Colors.grey.shade300),
       ),
@@ -383,7 +437,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
         style: GoogleFonts.montserrat(
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
-          color: AppColors.textDark,
+          color: AppColors.mainAppColor,
         ),
       ),
     );
@@ -424,34 +478,37 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
     );
   }
 
-  // 2. _buildRateInput - Changed to use TextEditingController
+
   Widget _buildRateInput({
     required String title,
-    required TextEditingController controller, // Changed from initialValue: String to TextEditingController
+    required TextEditingController controller,
     String keepPercentage = 'You keep: \$24.00',
-    String rateUnit = 'Per day', // Added rateUnit for clarity
-    bool isStandalone = false, // Base Rate-এর জন্য ব্যবহৃত
-    bool addBottomSpacing = true, // Default to true for spacing between rates
+    String rateUnit = 'Per day',
+    bool isStandalone = false,
+    bool addBottomSpacing = true,
   }) {
-    // Only used for the base rate's secondary text, otherwise titles come from _buildSectionTitle
-    final showKeepText = title != 'Daily Sitter Pick-Up/Drop-Off';
-    final keepText = showKeepText ? 'You keep: \$24.00' : keepPercentage;
+
+    final keepText = keepPercentage;
+
+
+    final rateValue = '\$${controller.text.isEmpty ? '0.00' : controller.text}';
 
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Title logic removed here to avoid double headers.
-
         SizedBox(height: isStandalone ? 5.h : 0.h),
 
         Container(
           height: 45.h,
           decoration: BoxDecoration(
+
+            color: AppColors.white,
             border: Border.all(color: AppColors.Secondaryborder),
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // Left side text (e.g., 'Per day')
               Padding(
@@ -460,38 +517,20 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
                   rateUnit,
                   style: GoogleFonts.montserrat(
                     fontSize: 14.sp,
-                    color: AppColors.grey,
+                    color: AppColors.mainAppColor,
                   ),
                 ),
               ),
-              // Vertical Divider
-              const VerticalDivider(width: 1, color: AppColors.Secondaryborder),
 
-              // Right side Input Field (TextFormField for manual input)
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: TextFormField(
-                    controller: controller, // Use the provided controller
-                    keyboardType: TextInputType.number,
-                    textAlign: TextAlign.right,
-                    style: GoogleFonts.montserrat(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.textDark,
-                    ),
-                    decoration: InputDecoration(
-                      prefixText: '\$',
-                      prefixStyle: GoogleFonts.montserrat(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.textDark,
-                      ),
-                      contentPadding: EdgeInsets.zero,
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                    ),
+              // Right side Display Text
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                child: Text(
+                  rateValue,
+                  style: GoogleFonts.montserrat(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.mainAppColor,
                   ),
                 ),
               ),
@@ -718,7 +757,7 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: AppColors.primaryText,
+                color: AppColors.textDark,
               ),
             ),
           ),
@@ -726,6 +765,8 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
       ),
     );
   }
+
+
 
   Widget _buildStickyFooter(BuildContext context, String text, bool isEditing) {
     // Reused helper widget
@@ -770,6 +811,43 @@ class DoggyDayCareSetupScreen extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+  Widget _buildSquareCheckbox1({
+    required String text,
+    required bool value,
+    required ValueChanged<bool?> onChanged,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 5.h),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Transform.scale(
+            scale: 1.1,
+            child: Checkbox(
+              value: value,
+              onChanged: onChanged,
+              activeColor: AppColors.mainAppColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(3.r),
+              ),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+          ),
+          SizedBox(width: 4.w),
+          Expanded(
+            child: Text(
+              text,
+              style: GoogleFonts.montserrat(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: AppColors.mainAppColor,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

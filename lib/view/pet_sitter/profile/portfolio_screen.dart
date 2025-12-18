@@ -20,7 +20,7 @@ class PortfolioScreen extends StatelessWidget {
     final portfolioController = Get.put(PortfolioController());
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: AppColors.bgColor,
       appBar: AppBar(
         backgroundColor: AppColors.mainAppColor,
         elevation: 0,

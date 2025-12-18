@@ -13,7 +13,6 @@ import '../home/widgets/custom_calendar.dart';
 import 'dialog.dart';
 import 'models/model.dart';
 
-
 class CompletionRatingDialog extends StatefulWidget {
   final String userName;
   final VoidCallback onDone;
@@ -260,13 +259,16 @@ class _SitterBookingsScreenState extends State<SitterBookingsScreen> {
             _buildColorLegends(),
             const SizedBox(height: 20),
 
-            CustomCalendarWidget(
-              unavailableDays: [
-                DateTime.now().add(const Duration(days: 1)),
-                DateTime.now().add(const Duration(days: 2)),
-                DateTime.now().add(const Duration(days: 3)),
-              ],
-              onDaySelected: (day) {},
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: CustomCalendarWidget(
+                unavailableDays: [
+                  DateTime.now().add(const Duration(days: 1)),
+                  DateTime.now().add(const Duration(days: 2)),
+                  DateTime.now().add(const Duration(days: 3)),
+                ],
+                onDaySelected: (day) {},
+              ),
             ),
             SizedBox(height: 24.h),
 
@@ -485,7 +487,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
           style: GoogleFonts.montserrat(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: AppColors.textDark,
+            color: AppColors.mainAppColor,
           ),
         ),
       ],
@@ -503,7 +505,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
             "$label:",
             style: GoogleFonts.montserrat(
               fontSize: 14,
-              color: AppColors.textDark,
+              color: AppColors.mainAppColor,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -540,7 +542,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
             style: GoogleFonts.montserrat(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: AppColors.textDark,
+              color: AppColors.mainAppColor,
             ),
           ),
           const SizedBox(height: 4),
@@ -574,7 +576,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
             style: GoogleFonts.montserrat(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: AppColors.textDark,
+              color: AppColors.mainAppColor,
             ),
           ),
           const SizedBox(width: 10),
@@ -813,7 +815,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
             style: GoogleFonts.montserrat(
               fontSize: 13,
               fontWeight: FontWeight.w500,
-              color: AppColors.subHeadingColor,
+              color: AppColors.mainAppColor,
             ),
           ),
         ],
@@ -931,7 +933,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
                 style: GoogleFonts.montserrat(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textDark,
+                  color: AppColors.mainAppColor,
                 ),
               ),
             ),
@@ -948,7 +950,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
                     ),
                   ),
                   TextSpan(
-                    text: " Per walk",
+                    text: "   Per walk",
                     style: GoogleFonts.montserrat(
                       fontSize: 12,
                       color: AppColors.subHeadingColor,
@@ -1013,7 +1015,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: AppColors.textDark,
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       Text(

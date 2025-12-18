@@ -1,4 +1,3 @@
-
 import '../../../../utils/app_images.dart';
 
 class BookingData {
@@ -84,10 +83,7 @@ class BookingData {
     required this.total,
   });
 
-  BookingData copyWith({
-    bool? isRebooked,
-    String? status,
-  }) {
+  BookingData copyWith({bool? isRebooked, String? status}) {
     return BookingData(
       userName: this.userName,
       userProfileImage: this.userProfileImage,
@@ -146,7 +142,7 @@ final List<BookingData> initialBookings = [
     petBreed: 'Labrador', // UNIFORM DATA
     petImage: AppImages.petImage,
     date: '02/09/2025',
-    price: '\$99',
+    price: '     \$99',
     isRebooked: true,
     status: 'On going',
     rating: 3.8,

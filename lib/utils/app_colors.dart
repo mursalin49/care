@@ -1,10 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-
 class AppColors {
-
-  static const Color mainAppColor = Color(0xFF024B5E);
+  static const Color mainAppColor = Color(0xFF035F75);
   static const Color white = Color(0xFFFFFFFF);
   static const bgColor = Color(0xFFF8F4EF);
   static const borderColor = Color(0xFFE6E6E6);
@@ -29,24 +27,15 @@ class AppColors {
   static const Color border = Color(0xFFE3E6F0);
   static const Color Secondaryborder = Color(0xFF9ABFC8);
   static const Color grey = Color(0xFF585858);
-  static Color mainC  = Color(0xFF035F75);
+  static Color mainC = Color(0xFF035F75);
   static Color blueColor = Color(0xFF359DFF);
   static Color greenColor = Color(0xFF008364);
   static Color redColor = Color(0xFFFE6C5D);
   static Color upcomingColor = Color(0xFF9ABFC8);
-  static const Color primaryActionColor = Color(0xFFE56A5B);
+  static const Color primaryActionColor = Color(0xFFFE6C5D);
   static const Color title = Color(0xFF024B5E);
 
-static const Color greytext = Color(0xFF585858);
-
-
+  static const Color greytext = Color(0xFF585858);
 }
 
-
-class TextColors{
-
-
-
-
-
-}
+class TextColors {}

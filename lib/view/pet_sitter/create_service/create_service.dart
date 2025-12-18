@@ -66,7 +66,7 @@ class CreateService extends StatelessWidget {
           SizedBox(height: 16.h),
 
           _buildServiceItem(
-            iconPath: 'assets/icons/lochome.svg',
+            iconPath: 'assets/icons/foot.svg',
             title: 'Dog Walking',
             subtitle: 'Visits in your home',
             onTap: () {

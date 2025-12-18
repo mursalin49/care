@@ -24,7 +24,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
   final TextEditingController passController = TextEditingController();
   String selectedLanguage = 'English';
 
-  String? selectedType = '';
+  String? selectedType = 'LinkedIn';
   final List<String> type = ['Facebook', 'Instagram', 'LinkedIn', 'Twitter (X)', 'YouTube', 'TikTok'];
 
   @override
@@ -78,7 +78,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                           fontFamily: 'BaksoSapi',
                           fontSize: 24.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF0A0812),
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 4.h),
@@ -103,7 +103,8 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                       SizedBox(height: 8.h),
                       CustomTextField(
                         textEditingController: nameController,
-                        hintText: 'Enter your Name',
+
+                        hintText: 'Seam Rahman',
                         hintStyle: TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontWeight: FontWeight.w400,
@@ -189,8 +190,8 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         "Select your comfortable language",
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 16.h),
@@ -229,21 +230,39 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         "How did you hear about us? (Optional)",
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
 
-                      CustomDropdownHome(
-                        items: type,
-                        selectedItem: selectedType,
-                        onItemSelected: (newValue) {
-                          setState(() {
-                            selectedType = newValue;
-                          });
-                        },
+
+                      Stack(
+                        alignment: Alignment.centerRight,
+                        children: [
+
+                          CustomDropdownHome(
+                            items: type,
+                            selectedItem: selectedType,
+                            onItemSelected: (newValue) {
+                              setState(() {
+                                selectedType = newValue;
+                              });
+                            },
+                          ),
+
+
+                          Padding(
+                            padding: EdgeInsets.only(right: 12.w),
+                            child: Icon(
+                              Icons.keyboard_arrow_down,
+                              size: 24.sp,
+                              color: Color(0xFF5E5E5E),
+                            ),
+                          ),
+                        ],
                       ),
+
 
                       SizedBox(height: 16.h),
                       Row(
@@ -264,7 +283,9 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                                 "assets/icons/checkIcon.svg",
                                 height: 14.h,
                                 width: 14.w,
-                                color: Colors.white,
+                                // SvgPicture এর কালার সাদা করার জন্য
+                                // colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+                                // অথবা আপনার অ্যাসেটটি সরাসরি সাদা হতে পারে
                               )
                                   : null,
                             ),
@@ -298,7 +319,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
-                            "Sign up",
+                            "SIGN UP", // ছবিতে বড় অক্ষরে দেখাচ্ছে
                             style: TextStyle(
                               fontFamily: 'BaksoSapi',
                               fontSize: 18.sp,
@@ -461,7 +482,7 @@ class LanguageCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF005D6C) : Colors.white,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8.r), // ছবির সাথে মিলিয়ে পরিবর্তন
           border: Border.all(
             color: AppColors.mainAppColor,
             width: 1,
@@ -483,10 +504,9 @@ class LanguageCard extends StatelessWidget {
               SizedBox(width: 8.w),
               Text(
                 title,
-                style: TextStyle(
-                  fontFamily: 'Montserrat-Regular',
+                style: GoogleFonts.inter( // ফন্ট পরিবর্তন
                   fontSize: 12.sp,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600, // আরও বোল্ড করা হলো
                   color: isSelected ? Colors.white : Colors.black,
                 ),
               ),

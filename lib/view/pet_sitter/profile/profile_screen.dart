@@ -17,184 +17,10 @@ import 'delate_account.dart';
 import 'edit_profile_screen.dart';
 import 'help_support_screen.dart';
 
-
-
 final controller = Get.put(SitterProfileController());
-
 
 class SitterProfileScreen extends StatelessWidget {
   const SitterProfileScreen({super.key});
-
-  // --- Helper Widgets ---
-
-  Widget _buildRoleButton(IconData icon, String title, bool isSelected, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12.h),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.mainAppColor : Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected ? AppColors.mainAppColor : AppColors.foundationColor,
-            width: 1,
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 20.sp,
-              color: isSelected ? Colors.white : AppColors.mainAppColor,
-            ),
-            SizedBox(width: 8.w),
-            Text(
-              title,
-              style: GoogleFonts.montserrat(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                color: isSelected ? Colors.white : AppColors.mainAppColor,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  // New widget for the card-based sections with shadow and rounded corners
-  Widget _buildCardSection({String? title, required Widget child}) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.w),
-      decoration: BoxDecoration(
-        color: Color(0xFFFFFFFF),
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Color(0xFFE3E6F0),
-            spreadRadius: 1,
-            blurRadius: 5,
-            offset: const Offset(0, 3),
-          ),
-        ],
-      ),
-      padding: EdgeInsets.all(20.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (title != null) ...[
-            Text(
-              title,
-              style: GoogleFonts.montserrat(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF1F2937),
-              ),
-            ),
-            SizedBox(height: 16.h),
-          ],
-          child,
-        ],
-      ),
-    );
-  }
-
-  // Helper for the column layout in Earnings Summary
-  Widget _buildEarningColumn(String label, String amount) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: GoogleFonts.montserrat(
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w500,
-            color: AppColors.subHeadingColor,
-          ),
-        ),
-        SizedBox(height: 4.h),
-        Text(
-          amount,
-          style: GoogleFonts.montserrat(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textDark,
-          ),
-        ),
-      ],
-    );
-  }
-
-  // Helper for all menu items
-  Widget _buildMenuItem({
-    String? svgIcon,
-    IconData? icon,
-    required String title,
-    required VoidCallback onTap,
-    Color? titleColor,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12.r),
-        ),
-        child: Row(
-          children: [
-
-            if (svgIcon != null)
-              SvgPicture.asset(
-                svgIcon,
-                width: 22.w,
-                height: 22.h,
-                color: titleColor ?? Colors.black87,
-              )
-
-            else if (icon != null)
-              Icon(
-                icon,
-                size: 22.sp,
-                color: titleColor ?? Colors.black87,
-              ),
-
-            SizedBox(width: 12.w),
-
-            // Text
-            Expanded(
-              child: Text(
-                title,
-                style: GoogleFonts.montserrat(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w500,
-                  color: titleColor ?? Color(0xFF585858),
-                ),
-              ),
-            ),
-
-            Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 16.sp,
-              color: Colors.grey.shade400,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-
-  // Helper for menu item dividers
-  Widget _buildDivider() {
-    return Divider(
-      color: AppColors.foundationColor,
-      height: 1,
-    );
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -218,7 +44,6 @@ class SitterProfileScreen extends StatelessWidget {
         ),
         centerTitle: true,
 
-
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
 
@@ -232,139 +57,172 @@ class SitterProfileScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Profile Picture and Info Section - Uses white background
-            Container(
-              color: Colors.white,
-              padding: EdgeInsets.all(24.w),
+          SizedBox(height: 20,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
                 children: [
-                  SizedBox(height: 20.h),
-                  // Profile Picture
-                  Stack(
-                    children: [
-                      Container(
-                        width: 120.w,
-                        height: 120.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.white,
-                            width: 3,
+
+                  /// ================= PROFILE CARD =================
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14.r),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/images/bgw.png'),
+                        colorFilter: ColorFilter.mode(Colors.grey, BlendMode.srcATop),
+                        fit: BoxFit.cover,
+                      ),
+
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.all(16.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14.r),
+                        color: AppColors.mainAppColor, // overlay
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+
+                          /// Profile Image
+                          Container(
+                            width: 72.w,
+                            height: 72.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: Colors.white, width: 2),
+                            ),
+                            child: ClipOval(
+                              child: Image.asset(
+                                'assets/images/profileImg.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
-                        child: ClipOval(
-                          child:   Image.asset(
-                            'assets/images/profileImg.png',
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                color: AppColors.foundationColor,
-                                child: Icon(
-                                  Icons.person,
-                                  size: 60.sp,
-                                  color: AppColors.grey,
+
+                          SizedBox(width: 12.w),
+
+                          /// Info
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+
+                                /// Name + Location
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'SEAM RAHMAN',
+                                      style: TextStyle(
+                                        fontFamily: 'BaksoSapi',
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.white,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          'assets/icons/location.svg',
+                                          color: AppColors.redColor,
+                                          width: 16.w,
+                                        ),
+                                        SizedBox(width: 4.w),
+                                        Text(
+                                          'cdmx',
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              );
-                            },
+
+                                SizedBox(height: 6.h),
+
+                                /// Role
+                                Text(
+                                  'PET SITTER',
+                                  style: TextStyle(
+                                    fontFamily: 'BaksoSapi',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+
+                                SizedBox(height: 6.h),
+
+                                /// Date
+                                Text(
+                                  'Mon, Nov 02, 2025 at 10:00 PM',
+                                  style: GoogleFonts.montserrat(
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white70,
+                                  ),
+                                ),
+
+                                SizedBox(height: 8.h),
+
+                                /// Rating
+                                Row(
+                                  children: [
+                                    const Icon(Icons.star, color: Colors.amber, size: 16),
+                                    SizedBox(width: 4.w),
+                                    Text(
+                                      '4.9 (42 reviews)',
+                                      style: GoogleFonts.montserrat(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          width: 36.w,
-                          height: 36.w,
-
-
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  // Name
-                  Text(
-                    'Seam Rahman',
-                    style: GoogleFonts.montserrat(
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
                     ),
                   ),
-                  SizedBox(height: 8.h),
-                  // Location
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
 
-                      SvgPicture.asset(
-                        'assets/icons/location.svg',
-                        width: 16.w,
-                        height: 16.h,
-                        // color: AppColors.foundationColor,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        'New York, NY',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.foundationColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8.h),
-                  // Rating
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        'assets/icons/star.svg',
-                        width: 16.w,
-                        height: 16.h,
-                        // color: AppColors.foundationColor,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        '4.9 (42 reviews)',
-                        style: GoogleFonts.montserrat(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.textDark,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24.h),
+                  SizedBox(height: 16.h),
+
+                  /// ================= SITTER BUTTON =================
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.symmetric(vertical: 12.h),
                     decoration: BoxDecoration(
-                      color: AppColors.white, // Light pink background
+                      color:  AppColors.redColor,
                       borderRadius: BorderRadius.circular(12.r),
-                      border: Border.all(color: AppColors.mainAppColor, width: 1),
+                      border: Border.all(color: AppColors.redColor, width: 1.5),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.favorite, color: Color(0xFFFF6B8A), size: 20.sp),
+                        Icon(Icons.favorite, color: AppColors.white, size: 20.sp),
                         SizedBox(width: 8.w),
                         Text(
                           'Sitter on Wuffoos',
                           style: GoogleFonts.montserrat(
-                            fontSize: 14,
+                            fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.mainAppColor,
+                            color: AppColors.white,
                           ),
                         ),
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
+
             // Padding between top section and first card
             SizedBox(height: 16.h),
 
@@ -376,10 +234,11 @@ class SitterProfileScreen extends StatelessWidget {
                   // Header Title
                   Text(
                     'Earnings Summary',
-                    style: GoogleFonts.montserrat(
+                    style: TextStyle(
+                      fontFamily: 'BaksoSapi',
                       fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.textDark,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.mainAppColor,
                     ),
                   ),
                   SizedBox(height: 16.h),
@@ -407,7 +266,7 @@ class SitterProfileScreen extends StatelessWidget {
                               fontFamily: 'Montserrat',
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.textDark,
+                              color: AppColors.mainAppColor,
                             ),
                           ),
                         ],
@@ -538,7 +397,7 @@ class SitterProfileScreen extends StatelessWidget {
                   ),
 
                   _buildMenuItem(
-                    svgIcon: "assets/icons/command-line.svg",
+                    svgIcon: "assets/icons/command-line (1).svg",
                     title: 'Terms & Condition',
                     onTap: () => Get.to(() => const TermsConditionScreen(appName: 'Pet-care', companyName: 'Pet Care Ltd',)),
                   ),
@@ -592,4 +451,172 @@ class SitterProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+Widget _buildRoleButton(IconData icon, String title, bool isSelected, VoidCallback onTap) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.symmetric(vertical: 12.h),
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.mainAppColor : Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isSelected ? AppColors.mainAppColor : AppColors.foundationColor,
+          width: 1,
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            size: 20.sp,
+            color: isSelected ? Colors.white : AppColors.mainAppColor,
+          ),
+          SizedBox(width: 8.w),
+          Text(
+            title,
+            style: GoogleFonts.montserrat(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w600,
+              color: isSelected ? Colors.white : AppColors.mainAppColor,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+// New widget for the card-based sections with shadow and rounded corners
+Widget _buildCardSection({String? title, required Widget child}) {
+  return Container(
+    margin: EdgeInsets.symmetric(horizontal: 20.w),
+    decoration: BoxDecoration(
+      color: Color(0xFFFFFFFF),
+      borderRadius: BorderRadius.circular(12),
+      boxShadow: [
+        BoxShadow(
+          color: Color(0xFFE3E6F0),
+          spreadRadius: 1,
+          blurRadius: 5,
+          offset: const Offset(0, 3),
+        ),
+      ],
+    ),
+    padding: EdgeInsets.all(20.w),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (title != null) ...[
+          Text(
+            title,
+            style: TextStyle(
+              fontFamily: 'BaksoSapi',
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.mainAppColor,
+            ),
+          ),
+          SizedBox(height: 16.h),
+        ],
+        child,
+      ],
+    ),
+  );
+}
+
+// Helper for the column layout in Earnings Summary
+Widget _buildEarningColumn(String label, String amount) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        label,
+        style: GoogleFonts.montserrat(
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w500,
+          color: AppColors.subHeadingColor,
+        ),
+      ),
+      SizedBox(height: 4.h),
+      Text(
+        amount,
+        style: GoogleFonts.montserrat(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w600,
+          color: AppColors.mainAppColor,
+        ),
+      ),
+    ],
+  );
+}
+
+// Helper for all menu items
+Widget _buildMenuItem({
+  String? svgIcon,
+  IconData? icon,
+  required String title,
+  required VoidCallback onTap,
+  Color? titleColor,
+}) {
+  return InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(12),
+    child: Container(
+      padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 16.w),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12.r),
+      ),
+      child: Row(
+        children: [
+
+          if (svgIcon != null)
+            SvgPicture.asset(
+              svgIcon,
+              width: 22.w,
+              height: 22.h,
+              color: titleColor ?? Colors.black87,
+            )
+
+          else if (icon != null)
+            Icon(
+              icon,
+              size: 22.sp,
+              color: titleColor ?? Colors.black87,
+            ),
+
+          SizedBox(width: 12.w),
+
+          // Text
+          Expanded(
+            child: Text(
+              title,
+              style: GoogleFonts.montserrat(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+                color: titleColor ?? Color(0xFF585858),
+              ),
+            ),
+          ),
+
+          Icon(
+            Icons.arrow_forward_ios_rounded,
+            size: 16.sp,
+            color: Colors.grey.shade400,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+
+// Helper for menu item dividers
+Widget _buildDivider() {
+  return Divider(
+    color: AppColors.foundationColor,
+    height: 1,
+  );
 }
