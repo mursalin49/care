@@ -65,7 +65,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        'assets/images/profileImg.png',
+                        'assets/images/mursalin.jpg',
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           return Container(
@@ -183,6 +183,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         SizedBox(height: 8.h),
         CustomTextField(
           hintText: hint,
+          hintStyle: GoogleFonts.montserrat(
+            color: Color(0xFF585858), 
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+          ),
           keyboardType: keyboardType ?? TextInputType.text,
           fieldBorderRadius: 14,
           fillColor: AppColors.white,
@@ -206,6 +211,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         SizedBox(height: 8.h),
         CustomTextField(
           hintText: hint,
+          hintStyle: GoogleFonts.montserrat(
+            color: Color(0xFF585858),
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+          ),
           maxLines: 4,
           maxLength: maxLength,
           fieldBorderRadius: 12,

@@ -163,14 +163,14 @@ class DogWalkingServiceSetupScreen extends StatelessWidget {
                               onChanged: (val) =>
                               controller.offerPuppyForFree.value = val!,
                             )),
-                        SizedBox(height: 15.h),
-                        _buildSectionTitle('Daily Sitter Pick-Up/Drop-Off', topPadding: 0),
-                        _buildEditableRateField(
-                          controller: controller.pickupDropOffController,
-                          keepText: 'You keep: 80%',
-                          rateType: 'Per day',
-                          showKeepText: true,
-                        ),
+                        // SizedBox(height: 15.h),
+                        // _buildSectionTitle('Daily Sitter Pick-Up/Drop-Off', topPadding: 0),
+                        // _buildEditableRateField(
+                        //   controller: controller.pickupDropOffController,
+                        //   keepText: 'You keep: 80%',
+                        //   rateType: 'Per day',
+                        //   showKeepText: true,
+                        // ),
                       ],
                     );
                   }
@@ -274,18 +274,18 @@ class DogWalkingServiceSetupScreen extends StatelessWidget {
                 )),
                 SizedBox(height: 15.h),
                 _buildServiceAreaInputField(controller),
-                SizedBox(height: 20.h),
-
-                _buildSectionTitle('Travel mode'),
-                ...controller.selectedTravelModes.keys.map((key) => Obx(() => _buildSquareCheckbox(
-                  text: key,
-                  value: controller.selectedTravelModes[key]!.value,
-                  onChanged: (val) => controller.toggleCheckbox(
-                    controller.selectedTravelModes,
-                    key,
-                    val!,
-                  ),
-                ))).toList(),
+                // SizedBox(height: 20.h),
+                //
+                // _buildSectionTitle('Travel mode'),
+                // ...controller.selectedTravelModes.keys.map((key) => Obx(() => _buildSquareCheckbox(
+                //   text: key,
+                //   value: controller.selectedTravelModes[key]!.value,
+                //   onChanged: (val) => controller.toggleCheckbox(
+                //     controller.selectedTravelModes,
+                //     key,
+                //     val!,
+                //   ),
+                // ))).toList(),
 
                 SizedBox(height: 20.h),
 

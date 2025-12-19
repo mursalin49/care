@@ -22,7 +22,7 @@ class account extends StatelessWidget {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
         decoration: BoxDecoration(
-          color: AppColors.bgColor,
+          color: AppColors.white,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
@@ -93,10 +93,10 @@ class account extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 12.w),
           margin: EdgeInsets.only(bottom: 8.h),
           decoration: BoxDecoration(
-            color: Colors.grey.shade50,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(8.r),
             border: Border.all(
-              color: isSelected ? AppColors.mainAppColor : Colors.grey.shade200,
+              color: isSelected ? AppColors.mainAppColor : Colors.grey,
               width: isSelected ? 1.5 : 1,
             ),
           ),

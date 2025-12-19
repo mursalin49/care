@@ -7,8 +7,8 @@ import '../../../utils/app_colors.dart';
 
 
 
-class PrivacyPolicyScreen extends StatelessWidget {
-  const PrivacyPolicyScreen({super.key});
+class SiterPrivacyPolicyScreen extends StatelessWidget {
+  const SiterPrivacyPolicyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ Text("Privacy & policy" ,   style: GoogleFonts.montserrat(
           fontSize: 18.sp,
           fontWeight: FontWeight.w600,
           height: 1.5,
-          color: Colors.black87,
+          color: AppColors.mainAppColor,
         ),),
 SizedBox(height: 15.h),
             Text(
@@ -76,7 +76,7 @@ SizedBox(height: 15.h),
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color:AppColors.mainAppColor,
               ),
             ),
 
@@ -100,7 +100,7 @@ SizedBox(height: 15.h),
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
 

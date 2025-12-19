@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/app_colors.dart';
 
 
-class TermsConditionScreen extends StatelessWidget {
-  const TermsConditionScreen({super.key});
+class SiterTermsConditionScreen extends StatelessWidget {
+  const SiterTermsConditionScreen({super.key, required String appName, required String companyName});
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +53,18 @@ class TermsConditionScreen extends StatelessWidget {
             Text(
               "Terms & Condition",
               style: GoogleFonts.montserrat(
-                fontSize: 16.sp,
+                fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.mainAppColor,
               ),
             ),
 
-
-
+SizedBox(height: 15.h,),
+Text( "Welcome to Services App !", style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500 ,),),
             SizedBox(height: 10.h),
 
             Text(
-              "Welcome to Services App !\n\n"
+
                   "Accessing or using our home, you agree to be bound "
                   "by these Terms of Service. If you do not agree with any "
                   "part of the terms, you must not use our home.",

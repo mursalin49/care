@@ -341,7 +341,7 @@ class SitterOnboardingScreen extends StatelessWidget {
             _buildSecondaryButton(
               text: 'Start creating your profile',
               onPressed: () {
-                Get.toNamed(AppRoutes.signUpScreen);
+                Get.toNamed(AppRoutes.sitterSignUpScreen);
               },
               buttonColor: AppColors.mainAppColor, // Dark Teal Button
             ),

@@ -425,7 +425,7 @@ class BoardingSetupScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.w),
       decoration: BoxDecoration(
-        color: const Color(0xFFF8FAFB),
+        color: AppColors.bgColor,
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(color: const Color(0xFFE0E7EC)),
       ),

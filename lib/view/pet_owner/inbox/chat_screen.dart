@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../utils/app_colors.dart';
 
-
 // --- Model Class ---
 class ChatMessage {
   final String id;
@@ -128,20 +127,20 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgColor,
       appBar: _buildAppBar(),
       body: Column(
         children: [
           Expanded(
             child: Obx(
-                  () => ListView.builder(
+              () => ListView.builder(
                 reverse: true,
                 controller: _scrollController,
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                 itemCount: controller.messages.length,
                 itemBuilder: (context, index) {
-                  final message = controller.messages[
-                  controller.messages.length - 1 - index];
+                  final message = controller
+                      .messages[controller.messages.length - 1 - index];
                   return _buildMessageBubble(message);
                 },
               ),
@@ -215,25 +214,21 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
               ),
             ],
-          )
+          ),
         ],
       ),
       actions: [
         PopupMenuButton<String>(
           icon: const Icon(Icons.more_vert, color: Colors.white),
-          onSelected: (String result) {
-          },
+          onSelected: (String result) {},
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
             const PopupMenuItem<String>(
               value: 'delete',
               child: Text('Delete conversation'),
             ),
-            const PopupMenuItem<String>(
-              value: 'block',
-              child: Text('Block'),
-            ),
+            const PopupMenuItem<String>(value: 'block', child: Text('Block')),
           ],
-        )
+        ),
       ],
     );
   }
@@ -295,8 +290,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   : CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding:
-                  EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                    vertical: 10.h,
+                  ),
                   decoration: BoxDecoration(
                     color: message.isUserMessage
                         ? const Color(0xFF7DBCB4)
@@ -304,7 +301,10 @@ class _ChatScreenState extends State<ChatScreen> {
                     borderRadius: BorderRadius.circular(14.r),
                     border: message.isUserMessage
                         ? null
-                        : Border.all(color: const Color(0xFFDDD9D9), width: 1.w),
+                        : Border.all(
+                            color: const Color(0xFFDDD9D9),
+                            width: 1.w,
+                          ),
                   ),
                   child: Text(
                     message.message,
@@ -338,8 +338,7 @@ class _ChatScreenState extends State<ChatScreen> {
       child: SafeArea(
         child: Column(
           children: [
-            if (_showAttachmentPanel)
-              _buildAttachmentPanel(),
+            if (_showAttachmentPanel) _buildAttachmentPanel(),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
@@ -357,15 +356,22 @@ class _ChatScreenState extends State<ChatScreen> {
                       height: 48.h,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: _showAttachmentPanel ? Colors.white : AppColors.mainAppColor,
+                        color: _showAttachmentPanel
+                            ? Colors.white
+                            : AppColors.mainAppColor,
                         border: _showAttachmentPanel
-                            ? Border.all(color: AppColors.mainAppColor, width: 1.w)
+                            ? Border.all(
+                                color: AppColors.mainAppColor,
+                                width: 1.w,
+                              )
                             : null,
                       ),
                       child: Icon(
-                          _showAttachmentPanel ? Icons.close : Icons.add,
-                          color: _showAttachmentPanel ? AppColors.mainAppColor : AppColors.white,
-                          size: 28.sp
+                        _showAttachmentPanel ? Icons.close : Icons.add,
+                        color: _showAttachmentPanel
+                            ? AppColors.mainAppColor
+                            : AppColors.white,
+                        size: 28.sp,
                       ),
                     ),
                   ),
@@ -377,8 +383,13 @@ class _ChatScreenState extends State<ChatScreen> {
                       style: GoogleFonts.montserrat(fontSize: 14.sp),
                       decoration: InputDecoration(
                         hintText: "Message",
-                        hintStyle: GoogleFonts.montserrat(color: Colors.grey.shade500),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 10.h),
+                        hintStyle: GoogleFonts.montserrat(
+                          color: Colors.grey.shade500,
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 18.w,
+                          vertical: 10.h,
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.r),
                           borderSide: BorderSide.none,
@@ -433,13 +444,17 @@ class _ChatScreenState extends State<ChatScreen> {
             children: [
               _buildAttachmentIcon(
                 iconData: Icons.image_outlined,
-                onTap: () { /* Handle image selection */ },
+                onTap: () {
+                  /* Handle image selection */
+                },
               ),
               SizedBox(width: 20.w),
 
               _buildAttachmentIcon(
                 iconData: Icons.location_on_outlined,
-                onTap: () { /* Handle location sharing */ },
+                onTap: () {
+                  /* Handle location sharing */
+                },
               ),
             ],
           ),
@@ -448,17 +463,16 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  Widget _buildAttachmentIcon({required IconData iconData, required VoidCallback onTap}) {
+  Widget _buildAttachmentIcon({
+    required IconData iconData,
+    required VoidCallback onTap,
+  }) {
     return InkWell(
       onTap: onTap,
       child: CircleAvatar(
         radius: 30.w,
         backgroundColor: AppColors.mainAppColor.withOpacity(0.1),
-        child: Icon(
-          iconData,
-          color: AppColors.mainAppColor,
-          size: 30.sp,
-        ),
+        child: Icon(iconData, color: AppColors.mainAppColor, size: 30.sp),
       ),
     );
   }

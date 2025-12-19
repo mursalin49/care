@@ -8,7 +8,6 @@ import 'package:petcare/view/pet_owner/inbox/widgets/search_field.dart';
 import '../../../../utils/app_colors.dart';
 import '../../../helpers/route.dart';
 
-
 class ChatListItem {
   final String id;
   final String userName;
@@ -90,8 +89,10 @@ class ChatListController extends GetxController {
       return chatList;
     }
     return chatList
-        .where((chat) =>
-        chat.userName.toLowerCase().contains(searchQuery.toLowerCase()))
+        .where(
+          (chat) =>
+              chat.userName.toLowerCase().contains(searchQuery.toLowerCase()),
+        )
         .toList();
   }
 }
@@ -100,11 +101,7 @@ class InboxScreen extends StatefulWidget {
   final String? userImage;
   final String? userName;
 
-  const InboxScreen({
-    super.key,
-    this.userImage,
-    this.userName,
-  });
+  const InboxScreen({super.key, this.userImage, this.userName});
 
   @override
   State<InboxScreen> createState() => _InboxScreenState();
@@ -113,7 +110,6 @@ class InboxScreen extends StatefulWidget {
 class _InboxScreenState extends State<InboxScreen> {
   late ChatListController controller;
   final TextEditingController searchController = TextEditingController();
-
 
   @override
   void initState() {
@@ -124,39 +120,37 @@ class _InboxScreenState extends State<InboxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgColor,
       body: Column(
         children: [
           _buildAppBar(),
           Expanded(
-            child: Obx(
-                  () {
-                final filteredChats = controller.getFilteredChats();
-                if (filteredChats.isEmpty) {
-                  return Center(
-                    child: Text(
-                      'No chats found',
-                      style: GoogleFonts.montserrat(
-                        fontSize: 14.sp,
-                        color: Colors.grey,
-                      ),
+            child: Obx(() {
+              final filteredChats = controller.getFilteredChats();
+              if (filteredChats.isEmpty) {
+                return Center(
+                  child: Text(
+                    'No chats found',
+                    style: GoogleFonts.montserrat(
+                      fontSize: 14.sp,
+                      color: Colors.grey,
                     ),
-                  );
-                }
-                return ListView.separated(
-                  padding: EdgeInsets.zero,
-                  itemCount: filteredChats.length,
-                  separatorBuilder: (context, index) => Divider(
-                    height: 1,
-                    color: Colors.grey.shade200,
-                    indent: 70.w,
                   ),
-                  itemBuilder: (context, index) {
-                    return _buildChatListTile(filteredChats[index]);
-                  },
                 );
-              },
-            ),
+              }
+              return ListView.separated(
+                padding: EdgeInsets.zero,
+                itemCount: filteredChats.length,
+                separatorBuilder: (context, index) => Divider(
+                  height: 1,
+                  color: Colors.grey.shade200,
+                  indent: 70.w,
+                ),
+                itemBuilder: (context, index) {
+                  return _buildChatListTile(filteredChats[index]);
+                },
+              );
+            }),
           ),
         ],
       ),
@@ -176,7 +170,12 @@ class _InboxScreenState extends State<InboxScreen> {
       ),
       child: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(left: 20.h, right: 20.w, top: 24.h, bottom: 20.h),
+          padding: EdgeInsets.only(
+            left: 20.h,
+            right: 20.w,
+            top: 24.h,
+            bottom: 20.h,
+          ),
           child: Column(
             children: [
               Row(
@@ -189,14 +188,13 @@ class _InboxScreenState extends State<InboxScreen> {
                       Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.white,
-                            width: 1,
-                          ),
+                          border: Border.all(color: Colors.white, width: 1),
                         ),
                         child: CircleAvatar(
                           radius: 25.r,
-                          backgroundImage: AssetImage('assets/images/profileImg.png'),
+                          backgroundImage: AssetImage(
+                            'assets/images/profileImg.png',
+                          ),
                         ),
                       ),
                       SizedBox(width: 15.w),
@@ -232,11 +230,11 @@ class _InboxScreenState extends State<InboxScreen> {
               ),
               SizedBox(height: 20.h),
               SearchField(
-                  controller: searchController,
-                  onChanged: (value) {
-                    // Empty for now, will implement later
-                  },
-                  hintText: 'Search here...',
+                controller: searchController,
+                onChanged: (value) {
+                  // Empty for now, will implement later
+                },
+                hintText: 'Search here...',
               ),
             ],
           ),
@@ -248,11 +246,12 @@ class _InboxScreenState extends State<InboxScreen> {
   Widget _buildChatListTile(ChatListItem chat) {
     return InkWell(
       onTap: () {
-        Get.to(() => ChatScreen(
-          contactName: chat.userName,
-          contactImage: chat.userImage,
-
-        ));
+        Get.to(
+          () => ChatScreen(
+            contactName: chat.userName,
+            contactImage: chat.userImage,
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),

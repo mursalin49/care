@@ -34,6 +34,7 @@ class ContactUsScreen extends StatelessWidget {
     final controller = Get.put(ContactController());
 
     return Scaffold(
+      backgroundColor: AppColors.bgColor,
       appBar: AppBar(
         backgroundColor: AppColors.mainAppColor,
         elevation: 0,

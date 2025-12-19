@@ -851,14 +851,14 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
                   // Location info - shown for all statuses
                   Row(
                     children: [
-                      const Icon(
-                        Icons.location_on_outlined,
-                        size: 14,
-                        color: AppColors.subHeadingColor,
+                      SvgPicture.asset(
+                        'assets/icons/location.svg',
+                        width: 14,
+                        height: 14,
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'New York, NY',
+                        booking.location,
                         style: GoogleFonts.montserrat(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
