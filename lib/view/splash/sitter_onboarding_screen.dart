@@ -18,7 +18,7 @@ class SitterOnboardingScreen extends StatelessWidget {
   static const String dog2Asset = 'assets/images/dog_working_bordercollie.png';
   static const String profileIcon = 'assets/images/head.png';
   static const String requestsIcon = 'assets/images/ww.png';
-  static const String paidIcon = 'assets/images/paid.png'; // <--- UPDATED TO PNG
+  static const String paidIcon = 'assets/images/paid.png';
 
 
   // Service Icons
@@ -100,21 +100,28 @@ class SitterOnboardingScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: GoogleFonts.montserrat(color: AppColors.white, fontSize: 16, fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(height: 10.h),
-                   Text(
-                    'Wuffoos makes it easy and promotes you to the nation\'s largest network of pet owners, delivering dog-walking, connection you love.',
-                    textAlign: TextAlign.center,
+
+                  SizedBox(height: 20.h),
+                  Text(
+                    'GET PAID TO HANG OUT WITH PETS\n'
+                    "Turn your free time into income doing something that feels good. \n"
+                        "Join the Wuffoos community of trusted pet care. Set your availability, "
+                        "connect with local pet parents, and earn money taking care of pets you’ll love.\n"
+                        'Do what you enjoy. Get paid for it.',
+                    textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 14,
                       height: 1.5,
-                      color: Colors.white70,
+                      color: AppColors.white,
                     ),
                   ),
+
                   SizedBox(height: 20.h),
                   _buildPrimaryButton(
                     text: 'GET STARTED',
                     onPressed: () => Get.toNamed(AppRoutes.sitterSignUpScreen),
                     buttonColor: AppColors.primaryActionColor,
+
                   ),
                 ],
               ),
@@ -142,7 +149,7 @@ class SitterOnboardingScreen extends StatelessWidget {
                       SizedBox(width: 8.w),
                       Text(
                         // **Exact text from the image for the main heading**
-                        'Flexibility puts you in control',
+                        'Make pet sitting fit your life',
                         style: GoogleFonts.montserrat(
                           fontSize: 18.sp, // Slightly larger font for the main heading
                           fontWeight: FontWeight.w500,
@@ -153,13 +160,13 @@ class SitterOnboardingScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h), // Add space after the main heading
 
-                  _buildCheckListItem('Set your own schedule and prices', iconColor: AppColors.redColor),
+                  _buildCheckListItem('Set your own schedule and rates', iconColor: AppColors.redColor),
                   SizedBox(height: 10.h), // Add a little space between items for better reading
 
-                  _buildCheckListItem('Offer any combination of pet care services', iconColor: AppColors.redColor),
+                  _buildCheckListItem('Offer any combined services', iconColor: AppColors.redColor),
                   SizedBox(height: 10.h),
 
-                  _buildCheckListItem('Set the, age, and other pet preferences that work for you', iconColor: AppColors.redColor),
+                  _buildCheckListItem('Set pet preferences that work for you', iconColor: AppColors.redColor),
                 ],
               ),
             ),
@@ -189,7 +196,7 @@ class SitterOnboardingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Text(
-                  "It’s easy. I go to the calendar and mark myself as available when I want to be.",
+                  "It's easy. Go to the calendar and mark yourself as available when you want to be",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(color: Colors.white),
                 ),
@@ -211,16 +218,16 @@ class SitterOnboardingScreen extends StatelessWidget {
                   SizedBox(height: 10.h),
                   // Check list items with black text
                   _buildCheckListItem(
-                    'The Wuffoos Guarantee which includes up to \$25,000 in vet cost reimbursement',
+                    'The Wuffoos Promise, which includes Pet Assistance',
                     iconColor: AppColors.primaryActionColor,
                     textColor: Colors.black87,
                   ),
                   _buildCheckListItem(
-                    'Manage your pet sitting schedule and more with the Wuffoos App',
+                    'Manage your pet sitting schedule and preferences with the Wuffoos app',
                     iconColor: AppColors.primaryActionColor,
                     textColor: Colors.black87,
                   ),
-                  _buildCheckListItem('24/7 support, including vet assistance', iconColor: AppColors.primaryActionColor, textColor: Colors.black87),
+                  _buildCheckListItem('24/7 support', iconColor: AppColors.primaryActionColor, textColor: Colors.black87),
                 ],
               ),
             ),
@@ -250,7 +257,7 @@ class SitterOnboardingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Text(
-                  "Thanks to the Wuffoos app, I know about my clients’ schedule immediately and I’m quick to respond!",
+                  "With Wuffoos you can build trust from the first visit to the last by staying connected with pet parents by sharing photos, videos, and live location updates.",
                   textAlign: TextAlign.center,
                   style: GoogleFonts.montserrat(color: Colors.white),
                 ),
@@ -277,7 +284,7 @@ class SitterOnboardingScreen extends StatelessWidget {
             _buildServiceListItem(
               iconPath: board,
               title: 'Boarding',
-              description: 'Care for a dog or cat overnight in your home. Sitters who offer boarding can make up to 2x more than sitters who don\'t.',
+              description: 'Watch dogs during the day at your home. PIck up and drop off is an optional service you can provide..',
               highlightText: 'HIGHEST EARNING',
             ),
             _buildServiceListItem(
@@ -288,7 +295,7 @@ class SitterOnboardingScreen extends StatelessWidget {
             _buildServiceListItem(
               iconPath: dogy,
               title: 'Dog Walking',
-              description: 'Take dogs out for a walk in your schedule.',
+              description: 'Take dogs out for a walk in your schedule with pick up and drop off included',
             ),
 
             SizedBox(height: 30.h),
@@ -317,10 +324,11 @@ class SitterOnboardingScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   // Safety Check list items
-                  _buildCheckListItem('Every service you offer on Wuffoos is backed by The Wuffoos Guarantee', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
-                  _buildCheckListItem('Safe, secured, and convenient online payments', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
-                  _buildCheckListItem('A top tier support team available 24/7', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
-                  _buildCheckListItem('Ongoing pet parent and sitter education', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
+                  _buildCheckListItem('Peace of mind for pet parents, confidence for sitters.', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
+                  _buildCheckListItem('Clear safety standards for every booking.', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
+                  _buildCheckListItem('Secure payments from start to finish.', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
+                  _buildCheckListItem('Support that’s there when it matters most.', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
+                  _buildCheckListItem('Resources and education to level up your pet care.', iconColor: AppColors.primaryActionColor, textColor: AppColors.mainAppColor),
                   // NOTE: "VIEW DETAILS" button removed as per Figma screenshot
                 ],
               ),
@@ -330,7 +338,7 @@ class SitterOnboardingScreen extends StatelessWidget {
             SizedBox(height: 10.h),
             Text(
               textAlign: TextAlign.center,
-              'Connect with pet owners ones your profile is approve',
+              'Connect with pet owners once your profile is approved',
               style: GoogleFonts.montserrat(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w600,
@@ -409,7 +417,8 @@ class SitterOnboardingScreen extends StatelessWidget {
     required Color buttonColor,
   }) {
     return SizedBox( // Changed to SizedBox for specific width control
-      width: 150.w, // Adjusted width for better look
+      width: 200.w,
+      height: 44.h,// Adjusted width for better look
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
@@ -505,16 +514,17 @@ class SitterOnboardingScreen extends StatelessWidget {
           ),
         ),
         SizedBox(height: 15.h),
-        // তিনটিই এখন PNG
+
         _buildHowItWorksListItem(
           iconPath: profileIcon, // PNG (head.png)
           title: 'Create your profile',
-          description: 'Tell us a little about yourself and what pet services you want to offer.',
+          description: '''Join a trusted care community.
+Sign up, then complete your \$199 MXN document validation + background check in seconds.''',
         ),
         _buildHowItWorksListItem(
           iconPath: requestsIcon, // PNG (ww.png)
           title: 'Accept requests',
-          description: 'Tell us the types of pets you want to care for and the dates that work for you. You make your own schedule.',
+          description: 'Review each request, confirm the details, and accept the bookings that fit your schedule and preferences',
         ),
         _buildHowItWorksListItem(
           iconPath: paidIcon, // PNG (paid.png)
