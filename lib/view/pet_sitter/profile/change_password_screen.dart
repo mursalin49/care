@@ -91,20 +91,22 @@ class ChangePasswordScreen extends StatelessWidget {
           style: GoogleFonts.montserrat(
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF2B4237),
+            color: AppColors.mainAppColor,
           ),
         ),
         SizedBox(height: 8.h),
         CustomTextField(
+
           hintText: hint,
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 12.sp,
+            color: AppColors.mainAppColor,
+          ),
           isPassword: true,
-          // prefixIcon: Icon(
-          //   Icons.lock_outline,
-          //   color: AppColors.subHeadingColor,
-          //   size: 20.sp,
-          // ),
+
           fieldBorderRadius: 12,
-          fieldBorderColor: Color(0xFFE3E6F0),
+          fieldBorderColor: AppColors.mainAppColor,
         ),
       ],
     );

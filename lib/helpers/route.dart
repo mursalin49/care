@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:petcare/view/pet_sitter/profile/terms_condition_screen.dart';
 import '../view/pet_owner/auth/Signup_screen.dart';
 import '../view/pet_owner/auth/forgot_password_screen.dart';
 import '../view/pet_owner/auth/login_screen.dart';
@@ -24,7 +25,9 @@ import '../view/pet_sitter/create_service/create_service.dart';
 import '../view/pet_sitter/create_service/dog_day_care.dart';
 import '../view/pet_sitter/home/home_screen.dart';
 import '../view/pet_sitter/home/sitter_notification_screen.dart';
+import '../view/pet_sitter/profile/privacy_policy_screen.dart';
 import '../view/pet_sitter/profile/profile_screen.dart';
+
 import '../view/splash/onboarding_screen.dart';
 import '../view/splash/sitter_onboarding_screen.dart';
 import '../view/splash/splash_screen.dart';
@@ -67,6 +70,14 @@ class AppRoutes {
   static const String dogDay = "/dog_day_care";
   static const String sitterProfileScreen = "/profile_screen";
   static const String sitterNotificationScreen = "/sitter_notification_screen";
+  static const String sitterTerms = "/terms_condition_screen";
+  static const String privacy = "/privacy_policy_screen";
+  static const String forget = "/forgot_password_screen";
+  static const String otp = "/otp_screen";
+  static const String newp = "/new_password_screen";
+
+
+
 
   static List<GetPage> routes = [
 
@@ -102,6 +113,11 @@ class AppRoutes {
     GetPage(name: dogDay, page: () => DoggyDayCareSetupScreen()),
     GetPage(name: sitterProfileScreen, page: () => SitterProfileScreen()),
     GetPage(name: sitterNotificationScreen, page: () => SitterNotificationScreen()),
+    GetPage(name: sitterTerms, page: () => SiterTermsConditionScreen(appName: '',companyName: '',)),
+    GetPage(name: privacy, page: () => SiterPrivacyPolicyScreen()),
+    GetPage(name: forget, page: () => SitterForgotPasswordScreen()),
+    GetPage(name: otp, page: () => SitterOTPScreen()),
+    GetPage(name: newp, page: () => SitterNewPasswordScreen()),
 
   ];
 }

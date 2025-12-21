@@ -60,7 +60,7 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
                   style: GoogleFonts.inter(
                     fontSize: 22.sp,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1F1D1D),
+                    color:AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 12.h),
@@ -79,7 +79,7 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
                   style: GoogleFonts.inter(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF303030),
+                    color: AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -89,7 +89,7 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 16.sp,
-                    color: AppColors.subHeadingColor,
+                    color: AppColors.mainAppColor,
                   ),
                   fillColor: Color(0xFFFFFFFF),
                   fieldBorderColor: AppColors.borderColor,
@@ -99,7 +99,7 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
 
                 GestureDetector(
                   onTap: (){
-                    Get.toNamed(AppRoutes.sitterOTPScreen);
+                    Get.toNamed(AppRoutes.otp);
                   },
                   child: Container(
                     width: double.infinity,
@@ -134,14 +134,14 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
                       ),
                       InkWell(
                         onTap: (){
-                          Get.toNamed(AppRoutes.loginScreen);
+                          Get.toNamed(AppRoutes.sitterLoginScreen);
                         },
                         child: Text(
                           "Login",
                           style: GoogleFonts.inter(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF2B2B2B),
+                            color: AppColors.mainAppColor,
                           ),
                         ),
                       ),
@@ -152,7 +152,7 @@ class _SitterForgotPasswordScreenState extends State<SitterForgotPasswordScreen>
                 Center(
                   child: InkWell(
                     onTap: (){
-                      Get.toNamed(AppRoutes.loginScreen);
+                      Get.toNamed(AppRoutes.sitterLoginScreen);
                     },
                     child: Text(
                       "Need Help?",

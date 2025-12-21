@@ -68,7 +68,7 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
                         style: GoogleFonts.montserrat(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                     ],
@@ -112,7 +112,7 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
                 style: GoogleFonts.montserrat(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w600,
-                  color: AppColors.textDark,
+                  color: AppColors.mainAppColor,
                 ),
               ),
               TextButton(
@@ -230,7 +230,7 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
             style: GoogleFonts.montserrat(
               fontSize: 11.sp,
               fontWeight: FontWeight.w500,
-              color: Colors.black87,
+              color: AppColors.mainAppColor,
             ),
           ),
         ],
@@ -243,39 +243,45 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
       backgroundColor: AppColors.mainAppColor,
       elevation: 0,
       toolbarHeight: 80.h,
-      leadingWidth: 80.w,
-      leading: Padding(
-        padding: EdgeInsets.only(left: 20.w),
-        child: const CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.white,
-          child: CircleAvatar(
-            radius: 28,
-            backgroundImage: AssetImage('assets/images/n.png'),
-          ),
-        ),
-      ),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      automaticallyImplyLeading: false,
+
+      title: Row(
         children: [
-          Text(
-            'Welcome Back',
-            style: GoogleFonts.montserrat(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+          const CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.white,
+            child: CircleAvatar(
+              radius: 28,
+              backgroundImage: AssetImage('assets/images/n.png'),
             ),
           ),
-          Text(
-            'Seam Rahman',
-            style: GoogleFonts.montserrat(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-              color: Colors.white,
-            ),
+          SizedBox(width: 12.w),
+
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome Back',
+                style: GoogleFonts.montserrat(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'Seam Rahman',
+                style: GoogleFonts.montserrat(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
         ],
       ),
+
       actions: [
         IconButton(
           onPressed: () => Get.to(() => const SitterNotificationScreen()),
@@ -285,8 +291,9 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
             height: 32,
           ),
         ),
-        SizedBox(width: 10.w),
+        SizedBox(width: 12.w),
       ],
+
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(30.r),
@@ -294,6 +301,7 @@ class _SitterHomeScreenState extends State<SitterHomeScreen> {
         ),
       ),
     );
+
   }
 }
 
@@ -336,6 +344,7 @@ class HomeBookingCard extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.bold,
+                        color: AppColors.mainAppColor,
                       ),
                     ),
                     Row(
@@ -413,7 +422,7 @@ class HomeBookingCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(12.w),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade100),
+              border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: Row(
@@ -476,14 +485,14 @@ class HomeBookingCard extends StatelessWidget {
     child: Container(
       padding: EdgeInsets.symmetric(vertical: 10.h),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade100),
+        border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Center(
         child: Text(
           val,
           style: GoogleFonts.montserrat(
-            color: isBold ? Colors.black : Colors.grey,
+            color: isBold ? AppColors.mainAppColor : AppColors.mainAppColor,
             fontWeight: isBold ? FontWeight.w600 : FontWeight.w400,
           ),
         ),
@@ -513,7 +522,7 @@ class HomeBookingCard extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black,
+                        color: AppColors.mainAppColor,
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -523,7 +532,7 @@ class HomeBookingCard extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () => Get.back(),
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red,
+                              backgroundColor: AppColors.redColor,
                               elevation: 0,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),

@@ -48,7 +48,7 @@ class account extends StatelessWidget {
                       style: GoogleFonts.montserrat(
                         fontSize: 15.sp,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xFF1F2937),
+                        color: AppColors.mainAppColor,
                       ),
                     ),
                     Icon(

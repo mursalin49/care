@@ -129,7 +129,7 @@ class FaqExpansionTile extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
             // The icon on the trailing side

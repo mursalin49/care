@@ -73,7 +73,7 @@ class PaymentsScreen extends StatelessWidget {
                 style: GoogleFonts.montserrat(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+                  color: AppColors.mainAppColor,
                 ),
               ),
               SizedBox(height: 10.h),

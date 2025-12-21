@@ -950,7 +950,7 @@ class _ExpandableBookingCardState extends State<ExpandableBookingCard> {
                     ),
                   ),
                   TextSpan(
-                    text: "   Per walk",
+                    text: " Per walk",
                     style: GoogleFonts.montserrat(
                       fontSize: 12,
                       color: AppColors.subHeadingColor,

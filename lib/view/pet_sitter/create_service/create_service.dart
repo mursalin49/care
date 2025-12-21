@@ -115,7 +115,7 @@ class CreateService extends StatelessWidget {
                     style: GoogleFonts.montserrat(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.textDark,
+                      color: AppColors.mainAppColor,
                     ),
                   ),
                   SizedBox(height: 4.h),

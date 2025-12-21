@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petcare/utils/app_colors.dart';
 
 class DeleteAccountDialog extends StatelessWidget {
   const DeleteAccountDialog({super.key});
@@ -33,7 +34,7 @@ class DeleteAccountDialog extends StatelessWidget {
               style: GoogleFonts.montserrat(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: AppColors.mainAppColor,
               ),
             ),
             const SizedBox(height: 8),

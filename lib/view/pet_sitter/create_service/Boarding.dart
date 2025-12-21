@@ -689,7 +689,7 @@ class BoardingSetupScreen extends StatelessWidget {
             style: GoogleFonts.montserrat(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
-              color: AppColors.primaryText,
+              color: AppColors.mainAppColor,
             ),
           ),
         )),

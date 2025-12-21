@@ -61,7 +61,7 @@ class _SitterOTPScreenState extends State<SitterOTPScreen> {
                   style: GoogleFonts.inter(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1F1D1D),
+                    color: AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -79,7 +79,7 @@ class _SitterOTPScreenState extends State<SitterOTPScreen> {
             
                 GestureDetector(
                   onTap: (){
-                    Get.toNamed(AppRoutes.sitterNewPasswordScreen);
+                    Get.toNamed(AppRoutes.newp);
                   },
                   child: Container(
                     width: double.infinity,
@@ -121,7 +121,7 @@ class _SitterOTPScreenState extends State<SitterOTPScreen> {
                           style: GoogleFonts.inter(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF2B2B2B),
+                            color: AppColors.mainAppColor,
                           ),
                         ),
                       ),
@@ -132,14 +132,14 @@ class _SitterOTPScreenState extends State<SitterOTPScreen> {
                 Center(
                   child: InkWell(
                     onTap: (){
-                      Get.toNamed(AppRoutes.loginScreen);
+                      Get.toNamed(AppRoutes.sitterLoginScreen);
                     },
                     child: Text(
                       "Back to Login",
                       style: GoogleFonts.inter(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w600,
-                        color: Color(0xFF060504),
+                        color: AppColors.mainAppColor,
                       ),
                     ),
                   ),

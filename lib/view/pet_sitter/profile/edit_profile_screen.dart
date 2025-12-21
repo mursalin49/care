@@ -184,7 +184,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         CustomTextField(
           hintText: hint,
           hintStyle: GoogleFonts.montserrat(
-            color: Color(0xFF585858), 
+            color: AppColors.mainAppColor,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),
@@ -212,7 +212,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         CustomTextField(
           hintText: hint,
           hintStyle: GoogleFonts.montserrat(
-            color: Color(0xFF585858),
+            color: AppColors.mainAppColor,
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),

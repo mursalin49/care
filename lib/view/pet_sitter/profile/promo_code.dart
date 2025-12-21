@@ -204,7 +204,7 @@ class _PromoCodeScreenState extends State<PromoCodeScreen> {
                     color: Colors.grey.shade500,
                     fontSize: 16.sp
                 ),
-                // "APPLY" বাটন
+
                 suffixIcon: TextButton(
                   onPressed: _applyPromoCode,
                   child: Text(
@@ -227,7 +227,7 @@ class _PromoCodeScreenState extends State<PromoCodeScreen> {
 
             SizedBox(height: 25.h),
 
-            // --- ডিসক্লেইমার টেক্সট ---
+
             Text(
               "If you obtained your promotional code through an employer-sponsored back-up care programme, by applying the code you agree that booking and related information may be shared with your employer.",
               style: GoogleFonts.montserrat(

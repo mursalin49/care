@@ -48,7 +48,7 @@ class _CustomDropdownHomeState extends State<CustomDropdownHome> {
                 fontFamily: 'Montserrat-Regular',
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF5E5E5E),
+                color: AppColors.mainAppColor,
               ),
             ),
             SizedBox(width: 5.w),
@@ -79,7 +79,7 @@ class _CustomDropdownHomeState extends State<CustomDropdownHome> {
             style: GoogleFonts.inter(
               fontSize: 16.sp,
               fontWeight: FontWeight.w400,
-              color: Color(0xFF7C7C7C),
+              color: AppColors.mainAppColor,
             ),
           ),
         );
@@ -87,7 +87,7 @@ class _CustomDropdownHomeState extends State<CustomDropdownHome> {
       color: Colors.white,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
-        side: BorderSide(color: AppColors.white, width: 1),
+        side: BorderSide(color: AppColors.mainAppColor, width: 1),
       ),
 
     );

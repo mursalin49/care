@@ -62,7 +62,7 @@ class _SitterNewPasswordScreenState extends State<SitterNewPasswordScreen> {
                   style: GoogleFonts.inter(
                     fontSize: 22.sp,
                     fontWeight: FontWeight.w600,
-                    color: Color(0xFF1F1D1D),
+                    color: AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -81,7 +81,7 @@ class _SitterNewPasswordScreenState extends State<SitterNewPasswordScreen> {
                   style: GoogleFonts.inter(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF303030),
+                    color: AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -90,8 +90,8 @@ class _SitterNewPasswordScreenState extends State<SitterNewPasswordScreen> {
                   hintText: 'New Password',
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    color: AppColors.subHeadingColor,
+                    fontSize: 12.sp,
+                    color: AppColors.mainAppColor,
                   ),
                   isPassword: true,
                   fillColor: Color(0xFFFFFFFF),
@@ -105,7 +105,7 @@ class _SitterNewPasswordScreenState extends State<SitterNewPasswordScreen> {
                   style: GoogleFonts.inter(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF303030),
+                    color: AppColors.mainAppColor,
                   ),
                 ),
                 SizedBox(height: 8.h),
@@ -114,8 +114,8 @@ class _SitterNewPasswordScreenState extends State<SitterNewPasswordScreen> {
                   hintText: 'Confirm password',
                   hintStyle: TextStyle(
                     fontWeight: FontWeight.w600,
-                    fontSize: 16.sp,
-                    color: AppColors.subHeadingColor,
+                    fontSize: 12.sp,
+                    color: AppColors.mainAppColor,
                   ),
                   isPassword: true,
                   fillColor: Color(0xFFFFFFFF),

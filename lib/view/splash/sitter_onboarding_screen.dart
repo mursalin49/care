@@ -151,8 +151,8 @@ class SitterOnboardingScreen extends StatelessWidget {
                         // **Exact text from the image for the main heading**
                         'Make pet sitting fit your life',
                         style: GoogleFonts.montserrat(
-                          fontSize: 18.sp, // Slightly larger font for the main heading
-                          fontWeight: FontWeight.w500,
+                          fontSize: 18, // Slightly larger font for the main heading
+                          fontWeight: FontWeight.w600,
                           color: AppColors.mainAppColor,
                         ),
                       ),
@@ -213,7 +213,7 @@ class SitterOnboardingScreen extends StatelessWidget {
                 children: [
                   Text(
                     'THE TOOLS TO SUCCEED',
-                    style: GoogleFonts.montserrat(color: AppColors.mainAppColor, fontSize: 18, fontWeight: FontWeight.w500),
+                    style: GoogleFonts.montserrat(color: AppColors.mainAppColor, fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 10.h),
                   // Check list items with black text
@@ -274,8 +274,8 @@ class SitterOnboardingScreen extends StatelessWidget {
             Text(
               'Services',
               style: GoogleFonts.montserrat(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w700,
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
                 color: AppColors.mainAppColor,
               ),
             ),
@@ -310,7 +310,7 @@ class SitterOnboardingScreen extends StatelessWidget {
                   Text(
                     'Safety first. Always.',
                     textAlign: TextAlign.left,
-                    style: GoogleFonts.montserrat(color: AppColors.mainAppColor, fontSize: 20, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.montserrat(color: AppColors.mainAppColor, fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                   SizedBox(height: 10.h),
                   const Text(
@@ -508,8 +508,8 @@ class SitterOnboardingScreen extends StatelessWidget {
         Text(
           'How it works',
           style: GoogleFonts.montserrat(
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w700,
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
             color: AppColors.mainAppColor,
           ),
         ),
@@ -588,7 +588,7 @@ Sign up, then complete your \$199 MXN document validation + background check in 
               Text(
                 title,
                 style: GoogleFonts.montserrat(
-                  fontSize: 18.sp,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: AppColors.mainAppColor,
                 ),
@@ -601,7 +601,7 @@ Sign up, then complete your \$199 MXN document validation + background check in 
             child: Text(
               description,
               style: GoogleFonts.montserrat(
-                fontSize: 14.sp,
+                fontSize: 14,
                 height: 1.4,
                 color: Colors.black87,
               ),

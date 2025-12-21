@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:petcare/view/pet_sitter/auth/sitter_signup_screen.dart';
 import '../../../helpers/route.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
@@ -58,8 +59,9 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.065),
 
                 Container(
+
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: AppColors.bgColor,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24),
                       topRight: Radius.circular(24),
@@ -83,7 +85,7 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                             style: GoogleFonts.inter(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF303030),
+                              color: AppColors.mainAppColor,
                             ),
                           ),
                         ),
@@ -95,7 +97,7 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                             fontFamily: 'Montserrat-Regular',
                             fontWeight: FontWeight.w400,
                             fontSize: 12.sp,
-                            color: Color(0xFF5E5E5E),
+                            color: AppColors.mainAppColor,
                           ),
                           fillColor: Color(0xFFFFFFFF),
                           fieldBorderColor: AppColors.borderColor,
@@ -108,22 +110,22 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                             style: GoogleFonts.inter(
                               fontSize: 14.sp,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xFF303030),
+                              color: AppColors.mainAppColor,
                             ),
                           ),
                         ),
                         SizedBox(height: 8.h),
                         CustomTextField(
                           textEditingController: passController,
-                          hintText: '**********',
+                          hintText: 'Password',
                           hintStyle: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16.sp,
-                            color: AppColors.subHeadingColor,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.sp,
+                            color: AppColors.mainAppColor,
                           ),
                           isPassword: true,
                           fillColor: Color(0xFFFFFFFF),
-                          fieldBorderColor: AppColors.borderColor,
+                          fieldBorderColor: AppColors.mainAppColor,
                         ),
 
                         SizedBox(height: 8.h),
@@ -156,13 +158,13 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                               style: GoogleFonts.inter(
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF737373),
+                                color: AppColors.mainAppColor,
                               ),
                             ),
                             Spacer(),
                             InkWell(
                               onTap: (){
-                                Get.toNamed(AppRoutes.forgotPasswordScreen);
+                                Get.toNamed(AppRoutes.forget);
                               },
                               child: Text(
                                 'Forgot Password?',
@@ -291,7 +293,7 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                               padding: EdgeInsets.all(4),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.white,
+                                color: AppColors.bgColor,
                                 boxShadow: [
                                   BoxShadow(
                                     color: Color(0xFF0B0E12).withOpacity(0.20),
@@ -325,14 +327,15 @@ class _SitterLoginScreenState extends State<SitterLoginScreen> {
                               ),
                               InkWell(
                                 onTap: (){
-                                  //Get.toNamed(AppRoutes.signUpScreen);
+                                  Get.toNamed(AppRoutes.sitterSignUpScreen
+                                  );
                                 },
                                 child: Text(
                                   "Create Account",
                                   style: GoogleFonts.inter(
                                     fontSize: 15.sp,
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF2B2B2B),
+                                    color: AppColors.mainAppColor,
                                   ),
                                 ),
                               ),

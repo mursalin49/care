@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:petcare/view/pet_sitter/bookings/booking_screen.dart';
 import 'package:petcare/view/pet_sitter/home/home_screen.dart';
+import 'package:petcare/view/pet_sitter/inbox/inbox_screen.dart';
 import 'package:petcare/view/pet_sitter/profile/profile_screen.dart';
 import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
@@ -30,7 +31,7 @@ class _SitterBottomNavScreenState extends State<SitterBottomNavScreen> {
     SitterHomeScreen(),
     CreateService(),
     SitterBookingsScreen(),
-    InboxScreen(),
+    SiterInboxScreen(),
     SitterProfileScreen()
   ];
 

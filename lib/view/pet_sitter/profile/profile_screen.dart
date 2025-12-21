@@ -167,8 +167,7 @@ class SitterProfileScreen extends StatelessWidget {
                                 ],
                               ),
 
-                              const Spacer(), // Pushes the text to the bottom
-                              /// Role - Now at the bottom left
+                             SizedBox(height: 10.h,),
                               Text(
                                 'PET SITTER',
                                 style: TextStyle(

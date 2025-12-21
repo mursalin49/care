@@ -72,9 +72,9 @@ class _OTPScreenState extends State<OTPScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.059),
-            
+
                 PinCodeEnter(context),
-            
+
                 GestureDetector(
                   onTap: (){
                     Get.toNamed(AppRoutes.newPasswordScreen);
@@ -98,7 +98,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   ),
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.030),
-            
+
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -112,7 +112,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       ),
                       InkWell(
                         onTap: (){
-            
+
                         },
                         child: Text(
                           "Resend",
@@ -126,7 +126,7 @@ class _OTPScreenState extends State<OTPScreen> {
                     ]
                 ),
                 SizedBox(height: 8.h),
-            
+
                 Center(
                   child: InkWell(
                     onTap: (){
@@ -144,7 +144,7 @@ class _OTPScreenState extends State<OTPScreen> {
                 ),
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.030),
-            
+
               ],
             ),
           ),

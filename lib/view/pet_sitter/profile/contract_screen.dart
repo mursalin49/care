@@ -115,7 +115,7 @@ class ContactItemCard extends StatelessWidget {
               option.assetPath,
               width: 28.w,
               height: 28.h,
-              colorFilter: const ColorFilter.mode(Colors.black87, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.mainAppColor, BlendMode.srcIn),
             ),
             const SizedBox(width: 20),
             Text(
@@ -123,7 +123,7 @@ class ContactItemCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: isSelected ? AppColors.mainAppColor : Colors.black87,
+                color: isSelected ? AppColors.mainAppColor : AppColors.mainAppColor,
               ),
             ),
           ],

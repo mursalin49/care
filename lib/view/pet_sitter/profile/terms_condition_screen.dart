@@ -60,7 +60,7 @@ class SiterTermsConditionScreen extends StatelessWidget {
             ),
 
 SizedBox(height: 15.h,),
-Text( "Welcome to Services App !", style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500 ,),),
+Text( "Welcome to Services App !", style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500 , color: AppColors.mainAppColor),),
             SizedBox(height: 10.h),
 
             Text(

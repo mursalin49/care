@@ -8,6 +8,7 @@ import '../../../utils/app_colors.dart';
 import '../../../utils/app_icons.dart';
 import '../../components/custom_text_field.dart';
 import '../../pet_owner/auth/widget/custom_dropdown.dart';
+import '../profile/terms_condition_screen.dart';
 
 class SitterSignUpScreen extends StatefulWidget{
   const SitterSignUpScreen({super.key});
@@ -54,7 +55,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
 
               Container(
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: AppColors.bgColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
@@ -97,19 +98,19 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
                       CustomTextField(
                         textEditingController: nameController,
 
-                        hintText: 'Seam Rahman',
+                        hintText: 'Enter your Name',
                         hintStyle: TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
-                          color: Color(0xFF5E5E5E),
+                          color: AppColors.mainAppColor,
                         ),
                         fillColor: Color(0xFFFFFFFF),
                         fieldBorderColor: AppColors.borderColor,
@@ -122,7 +123,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
@@ -133,7 +134,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                           fontFamily: 'Montserrat-Regular',
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
-                          color: Color(0xFF5E5E5E),
+                          color: AppColors.mainAppColor,
                         ),
                         fillColor: Color(0xFFFFFFFF),
                         fieldBorderColor: AppColors.borderColor,
@@ -145,18 +146,18 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
                       CustomTextField(
                         textEditingController: phoneNumController,
-                        hintText: '+880xxxxxxxxxxxxxxxxx',
+                        hintText: 'Enter your phone number',
                         hintStyle: TextStyle(
                           fontFamily: 'Montserrat-Regular',
                           fontWeight: FontWeight.w400,
                           fontSize: 12.sp,
-                          color: Color(0xFF5E5E5E),
+                          color: AppColors.mainAppColor,
                         ),
                         fillColor: Color(0xFFFFFFFF),
                         fieldBorderColor: AppColors.borderColor,
@@ -168,21 +169,21 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                         style: GoogleFonts.inter(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF303030),
+                          color: AppColors.mainAppColor,
                         ),
                       ),
                       SizedBox(height: 8.h),
                       CustomTextField(
                         textEditingController: passController,
-                        hintText: '**********',
+                        hintText: 'Enter your Password',
                         hintStyle: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: AppColors.subHeadingColor,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.sp,
+                          color: AppColors.mainAppColor,
                         ),
                         isPassword: true,
                         fillColor: Color(0xFFFFFFFF),
-                        fieldBorderColor: AppColors.borderColor,
+                        fieldBorderColor: AppColors.mainAppColor,
                       ),
                       SizedBox(height: 16.h),
 
@@ -283,20 +284,65 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                                 "assets/icons/checkIcon.svg",
                                 height: 14.h,
                                 width: 14.w,
-                                // SvgPicture এর কালার সাদা করার জন্য
-                                // colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
-                                // অথবা আপনার অ্যাসেটটি সরাসরি সাদা হতে পারে
+
                               )
                                   : null,
                             ),
                           ),
-                          const SizedBox(width: 5),
-                          Text(
-                            'Accept privacy statement',
-                            style: GoogleFonts.inter(
-                              fontSize: 12.sp,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xFF5E5E5E),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              Get.offNamed(AppRoutes.privacy);
+
+                            },
+                            child: Text(
+                              'Accept Privacy Statement',
+                              style: GoogleFonts.inter(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.mainAppColor,
+                              ),
+                            ),
+                          ),
+
+                        ],
+                      ),
+                      SizedBox(height: 15.h,),
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          GestureDetector(
+                            onTap: () => setState(() => agree = !agree),
+                            child: Container(
+                              height: 18.h,
+                              width: 18.w,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppColors.mainAppColor, width: 1.5),
+                                borderRadius: BorderRadius.circular(4),
+                                color: agree ? AppColors.mainAppColor : Colors.transparent,
+                              ),
+                              child: agree
+                                  ? SvgPicture.asset(
+                                "assets/icons/checkIcon.svg",
+                                height: 14.h,
+                                width: 14.w,
+
+                              )
+                                  : null,
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {
+                              Get.offNamed(AppRoutes.sitterTerms);
+                            },
+                            child: Text(
+                              'Accept Terms & Conditions',
+                              style: GoogleFonts.inter(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w400,
+                                color: AppColors.mainAppColor,
+                              ),
                             ),
                           ),
 
@@ -319,7 +365,7 @@ class _SitterSignUpScreenState extends State<SitterSignUpScreen> {
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
-                            "SIGN UP", // ছবিতে বড় অক্ষরে দেখাচ্ছে
+                            "SIGN UP",
                             style: TextStyle(
                               fontFamily: 'BaksoSapi',
                               fontSize: 18.sp,
@@ -482,7 +528,7 @@ class LanguageCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
           color: isSelected ? const Color(0xFF005D6C) : Colors.white,
-          borderRadius: BorderRadius.circular(8.r), // ছবির সাথে মিলিয়ে পরিবর্তন
+          borderRadius: BorderRadius.circular(8.r), 
           border: Border.all(
             color: AppColors.mainAppColor,
             width: 1,
@@ -504,10 +550,10 @@ class LanguageCard extends StatelessWidget {
               SizedBox(width: 8.w),
               Text(
                 title,
-                style: GoogleFonts.inter( // ফন্ট পরিবর্তন
+                style: GoogleFonts.inter( 
                   fontSize: 12.sp,
-                  fontWeight: FontWeight.w600, // আরও বোল্ড করা হলো
-                  color: isSelected ? Colors.white : Colors.black,
+                  fontWeight: FontWeight.w600,
+                  color: isSelected ? Colors.white : Color(0xFF035F75),
                 ),
               ),
             ],
